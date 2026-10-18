@@ -1,0 +1,47 @@
+name: Social autopilot
+
+# Daily posting through Zernio or Ayrshare. Off while you use Metricool (metricool-week.yml).
+# To turn it on, set publisher in config.yaml and uncomment the schedule lines.
+on:
+  # schedule:
+  #   - cron: "0 11 * * *"        # 7 AM ET (6 AM in winter): write today's draft and send it for approval
+  #   - cron: "20 13-23 * * *"    # hourly 9 AM-7 PM ET: post today's draft once approved
+  workflow_dispatch:
+    inputs:
+      command:
+        description: generate or publish
+        default: generate
+
+permissions:
+  contents: write
+
+concurrency: autopilot
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get install -y ffmpeg >/dev/null
+      - run: pip install -r requirements.txt
+      - name: Run
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ZERNIO_API_KEY: ${{ secrets.ZERNIO_API_KEY }}
+          AYRSHARE_API_KEY: ${{ secrets.AYRSHARE_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then CMD="${{ inputs.command }}";
+          elif [ "${{ github.event.schedule }}" = "0 11 * * *" ]; then CMD=generate;
+          else CMD=publish; fi
+          python -m autopilot.main "$CMD"
+      - name: Save queue
+        run: |
+          git config user.name "autopilot"
+          git config user.email "autopilot@users.noreply.github.com"
+          git add queue
+          git diff --cached --quiet || (git commit -m "autopilot: update queue" && git push)

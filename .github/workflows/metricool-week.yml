@@ -1,0 +1,40 @@
+name: Metricool weekly batch
+
+# Every Saturday, build next week's posts and a Metricool CSV.
+# Images and videos are published through GitHub Pages (the docs/ folder) so Metricool can fetch them.
+on:
+  schedule:
+    - cron: "0 13 * * 6"        # Saturday 9 AM ET (8 AM in winter)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: autopilot
+
+jobs:
+  week:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get install -y ffmpeg >/dev/null
+      - run: pip install -r requirements.txt
+      - name: Build week
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m autopilot.main week
+      - name: Save posts, media and CSV
+        run: |
+          git config user.name "autopilot"
+          git config user.email "autopilot@users.noreply.github.com"
+          git add -A queue docs exports data/metricool_ledger.json
+          git diff --cached --quiet || (git commit -m "autopilot: Metricool week" && git push)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: metricool-csv
+          path: exports/
