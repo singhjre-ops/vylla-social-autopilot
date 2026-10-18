@@ -70,7 +70,7 @@ metricool:
   import_as_draft: true          # true = posts land as drafts you confirm in Metricool
   time_format: "%H:%M"          # match Metricool's import dropdown: "%H:%M" = 10:00, "%H:%M:%S" = 10:00:00, "%I:%M %p" = 10:00 AM
   tiktok_privacy: PUBLIC_TO_EVERYONE   # or FOLLOWER_OF_CREATOR, MUTUAL_FOLLOW_FRIENDS, SELF_ONLY
-  ai_disclosure: true           # mark YouTube/TikTok videos as AI-generated content (the voiceover is AI)
+  ai_disclosure: false          # mark YouTube/TikTok videos as AI-generated content (the voiceover is AI)
   # Weekday (0 = Monday) -> networks. Each line becomes one Metricool post.
   # Video days post a 10-second vertical video (Reel on Instagram, Short on YouTube).
   # Google Business Profile does not take video, so it gets the image on its own day.
