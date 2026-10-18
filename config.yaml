@@ -13,45 +13,18 @@ agent:
 # Appended to every caption by the compliance step.
 disclosure: "Jaskaran Singh, REALTOR® | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English · Hindi · Punjabi · Urdu | Equal Housing Opportunity"
 
-# Posts rotate one region per day, then the next town in that region.
-# Each region gets an equal share of days, however many towns it has. Add or remove towns freely.
+# Posts rotate through these towns, one per post day. Add or remove towns freely.
 regions:
-  Greater Danbury and New Milford:
+  Greater Danbury area:
     - Newtown
-    - Sandy Hook
     - Danbury
-    - Bethel
-    - Brookfield
-    - Ridgefield
-    - Redding
-    - Monroe
     - New Milford
-  Lower Fairfield County:
-    - Greenwich
-    - Stamford
-    - Darien
-    - New Canaan
-    - Norwalk
-    - Westport
-    - Wilton
-    - Weston
-    - Fairfield
-    - Easton
-    - Trumbull
-    - Shelton
-    - Stratford
-    - Bridgeport
-  New Haven County:
+    - Ridgefield
+    - Bethel
     - Southbury
-    - Oxford
-    - Middlebury
-    - Seymour
-    - Woodbridge
-    - Orange
-    - Milford
-    - Derby
-    - Naugatuck
-    - Cheshire
+    - Brookfield
+    - Sandy Hook
+    - Wilton
 
 brand:
   charcoal: "#31313B"

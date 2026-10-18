@@ -3,7 +3,7 @@
 Writes and designs social media posts for Jaskaran Singh, Vylla Home, and schedules them through Metricool's free plan.
 
 **Every Saturday:**
-1. Gemini writes next week's posts. Each post follows the theme calendar in `config.yaml` and covers a town from one of three regions: Greater Danbury and New Milford, lower Fairfield County, and New Haven County.
+1. Gemini writes next week's posts. Each post follows the theme calendar in `config.yaml` and covers one of nine core towns: Newtown, Sandy Hook, Danbury, Bethel, Brookfield, New Milford, Ridgefield, Southbury and Wilton.
 2. A compliance check blocks fair-housing red flags. It retries up to 3 times. A post that is still flagged is imported as a draft for you to fix.
 3. Each post gets a Vylla-branded graphic and a 10-second vertical video.
 4. Images and videos are published to a public web folder (GitHub Pages), so Metricool can fetch them.
