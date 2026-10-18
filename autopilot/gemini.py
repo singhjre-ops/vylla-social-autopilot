@@ -25,7 +25,10 @@ Return JSON only, with these keys:
   "subhead": max 14 words for the graphic,
   "caption": 80-150 words for Facebook, Instagram and Google Business Profile, ending with a call to action,
   "short_caption": max 220 characters for X and TikTok,
-  "hashtags": list of 5-8 hashtags without the # sign, local where possible.
+  "hashtags": list of 5-8 hashtags without the # sign, local where possible,
+  "voiceover": a 20-28 word script read aloud over the short video (about 9 seconds). Open with a specific local
+    hook (a landmark, season detail or useful fact), not a greeting. Speak as a narrator, not as the agent, and end
+    with: "Call or text Jaskaran Singh with Vylla Home."
 Do not include phone numbers, disclaimers or the brokerage line; they are added later."""
 
 

@@ -16,7 +16,7 @@ import os
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from . import compliance, gemini, metricool, telegram
+from . import audio, compliance, gemini, metricool, telegram
 from .config import DATA, QUEUE, load_config, load_env
 from .publishers import list_zernio_accounts, publish
 from .render import make_video, render
@@ -30,6 +30,8 @@ SAMPLE = {
                "I'm happy to walk you through what's on the market. Send me a message any time.",
     "short_caption": "Fall color along Lake Zoar in Southbury. Thinking about a move this season? Let's talk.",
     "hashtags": ["SouthburyCT", "LakeZoar", "CTRealEstate", "LitchfieldHills", "FallInCT"],
+    "voiceover": "Fall in Southbury means Lake Zoar trails and bright back roads. Thinking about a move? "
+                 "Call or text Jaskaran Singh with Vylla Home.",
 }
 
 
@@ -111,7 +113,19 @@ def generate(cfg, today, sample=False, notify=True):
     label = THEMES[theme]["label"]
     render(post, label, facts["town"], cfg, out / "feed.jpg", photo_url=facts.get("photo_url"))
     render(post, label, facts["town"], cfg, out / "vertical.jpg", size=(1080, 1920), photo_url=facts.get("photo_url"))
-    make_video(out / "vertical.jpg", out / "vertical.mp4")
+    voice = None
+    try:
+        voice = audio.voiceover(cfg, post.get("voiceover"), out / "voice.wav")
+    except Exception as e:  # never let audio break the post
+        print(f"voiceover failed: {e}")
+    music = audio.pick_music(today.toordinal())
+    make_video(out / "vertical.jpg", out / "vertical.mp4", voice=voice, music=music,
+               music_volume=cfg.get("music", {}).get("volume", 0.15))
+    credit = audio.music_credit(music)
+    if credit:  # CC BY license: credit the artist wherever the video is posted
+        post["music_credit"] = credit
+        for k in ("long", "short"):
+            post["captions"][k] += f"\n\n{credit}"
 
     # A post that still has flags always waits for you, even in full-auto mode.
     if not notify:

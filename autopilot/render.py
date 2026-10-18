@@ -92,18 +92,39 @@ def render(post, theme_label, town, cfg, out_path, size=(1080, 1350), photo_url=
     return out_path
 
 
-def make_video(image_path, out_path, seconds=10):
-    """Turn a vertical graphic into a short slow-zoom video for TikTok and YouTube Shorts."""
+def make_video(image_path, out_path, seconds=10, voice=None, music=None, music_volume=0.15):
+    """Turn a vertical graphic into a slow-zoom video for Reels, TikTok and YouTube Shorts.
+
+    voice: optional WAV voiceover; the video lengthens to fit it (up to 20 s).
+    music: optional background track, ducked under the voice and faded out at the end.
+    """
     if not shutil.which("ffmpeg"):
         print("ffmpeg not installed; skipping video")
         return None
-    frames = seconds * 30
+    if voice:
+        from .audio import duration
+        seconds = min(max(seconds, duration(voice) + 1.5), 20)
+    seconds = round(seconds, 2)
+    frames = int(seconds * 30)
     zoom = f"zoompan=z='min(zoom+0.0006,1.08)':d={frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920:fps=30"
-    subprocess.run(
-        ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(image_path),
-         "-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo",
-         "-vf", zoom, "-t", str(seconds), "-c:v", "libx264", "-pix_fmt", "yuv420p",
-         "-c:a", "aac", "-shortest", str(out_path)],
-        check=True,
-    )
+    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(image_path)]
+    fade = f"afade=t=out:st={max(seconds - 1.5, 0)}:d=1.5"
+    if voice and music:
+        cmd += ["-i", str(voice), "-stream_loop", "-1", "-i", str(music)]
+        audio = (f"[1:a]aresample=44100,adelay=400|400,apad[v];"
+                 f"[2:a]aresample=44100,volume={music_volume}[m];"
+                 f"[v][m]amix=inputs=2:duration=longest:normalize=0,atrim=0:{seconds},{fade}[a]")
+    elif voice:
+        cmd += ["-i", str(voice)]
+        audio = f"[1:a]aresample=44100,adelay=400|400,apad,atrim=0:{seconds},{fade}[a]"
+    elif music:
+        cmd += ["-stream_loop", "-1", "-i", str(music)]
+        audio = f"[1:a]aresample=44100,volume={min(music_volume * 3, 0.6)},atrim=0:{seconds},{fade}[a]"
+    else:
+        cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
+        audio = f"[1:a]atrim=0:{seconds}[a]"
+    cmd += ["-filter_complex", f"[0:v]{zoom}[vid];{audio}", "-map", "[vid]", "-map", "[a]",
+            "-t", str(seconds), "-c:v", "libx264", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-b:a", "160k", "-ac", "2", str(out_path)]
+    subprocess.run(cmd, check=True)
     return out_path
