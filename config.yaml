@@ -36,6 +36,16 @@ brand:
 gemini:
   model: gemini-flash-latest     # free tier covers daily use; change if Google renames models
 
+# Spoken voiceover on the short videos (Gemini text-to-speech, same API key).
+voiceover:
+  enabled: true
+  voice: Charon                  # other male voices: Orus, Fenrir, Iapetus. Female: Kore, Aoede, Leda
+  style: "Say in a warm, confident, conversational tone, at a natural pace:"
+
+# Background music: drop royalty-free tracks (mp3/m4a/wav) into assets/music/. They rotate by day.
+music:
+  volume: 0.15                   # under the voiceover; music-only videos play louder automatically
+
 # One theme per weekday (0 = Monday). Themes are defined in autopilot/themes.py.
 calendar:
   0: market_update
