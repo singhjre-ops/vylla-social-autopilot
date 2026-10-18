@@ -2,6 +2,7 @@
 
 import json
 import os
+import time
 
 import requests
 
@@ -42,16 +43,43 @@ def generate(cfg, brief):
         "contents": [{"role": "user", "parts": [{"text": brief}]}],
         "generationConfig": {"responseMimeType": "application/json", "temperature": 0.9},
     }
-    resp = requests.post(
-        API.format(model=cfg["gemini"]["model"]),
-        headers={"x-goog-api-key": key, "Content-Type": "application/json"},
-        json=body,
-        timeout=60,
-    )
-    resp.raise_for_status()
+    resp = _post_with_retries(cfg, key, body)
     text = resp.json()["candidates"][0]["content"]["parts"][0]["text"]
     post = json.loads(text)
     missing = {"headline", "subhead", "caption", "short_caption", "hashtags"} - post.keys()
     if missing:
         raise ValueError(f"Gemini response missing keys: {missing}")
     return post
+
+
+RETRY_STATUS = {429, 500, 502, 503, 504}
+FALLBACK_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest", "gemini-2.5-flash-lite"]
+
+
+def _post_with_retries(cfg, key, body):
+    """Try the configured model, then fallbacks. Retry overloads (503) and rate limits (429) with backoff."""
+    models = [cfg["gemini"]["model"]] + [m for m in FALLBACK_MODELS if m != cfg["gemini"]["model"]]
+    last = None
+    for model in models:
+        for wait in (0, 10, 30, 60):
+            if wait:
+                time.sleep(wait)
+            try:
+                resp = requests.post(
+                    API.format(model=model),
+                    headers={"x-goog-api-key": key, "Content-Type": "application/json"},
+                    json=body,
+                    timeout=90,
+                )
+            except requests.RequestException as e:
+                last = f"{model}: {e}"
+                continue
+            if resp.ok:
+                return resp
+            last = f"{model}: HTTP {resp.status_code} {resp.text[:300]}"
+            print(f"Gemini {last}")
+            if resp.status_code == 404:
+                break                      # model name not available; try the next one
+            if resp.status_code not in RETRY_STATUS:
+                raise RuntimeError(f"Gemini request failed: {last}")
+    raise RuntimeError(f"Gemini unavailable after retries and fallbacks. Last error: {last}")
