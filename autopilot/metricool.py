@@ -22,7 +22,9 @@ NETWORKS = ["facebook", "twitter", "linkedin", "gmb", "instagram", "pinterest", 
             "threads", "bluesky"]
 DEFAULT_HEADER = ["Text", "Date", "Time", "Draft", "Facebook", "Twitter", "LinkedIn", "GMB", "Instagram",
                   "Pinterest", "TikTok", "Youtube", "Threads", "Bluesky", "Picture Url 1",
-                  "Youtube Video Title", "Youtube Video For Kids", "TikTok Title", "Brand name"]
+                  "Youtube Video Title", "Youtube Video For Kids", "TikTok Title", "Brand name",
+                  "Instagram Post Type", "Instagram Show Reel On Feed", "Facebook Post Type",
+                  "YouTube Video Type", "YouTube Video Privacy"]
 ALIASES = {"gmb": ("gmb", "gbp", "googlebusiness", "googlemybusiness"), "twitter": ("twitter", "twitterx", "x")}
 
 
@@ -53,6 +55,16 @@ def _column(header, key):
         if key == "youtube_kids" and n.startswith("youtube") and "kids" in n:
             return col
         if key == "tiktok_title" and n.startswith("tiktok") and "title" in n:
+            return col
+        if key == "ig_type" and n == "instagramposttype":
+            return col
+        if key == "ig_feed" and n == "instagramshowreelonfeed":
+            return col
+        if key == "fb_type" and n == "facebookposttype":
+            return col
+        if key == "yt_type" and n == "youtubevideotype":
+            return col
+        if key == "yt_privacy" and n == "youtubevideoprivacy":
             return col
     return None
 
@@ -107,7 +119,14 @@ def build_week(cfg, week_start, generate):
             "media": f"{base}/{media_name}",
             "youtube_title": post["headline"][:100] if "youtube" in networks else "",
             "youtube_kids": "FALSE" if "youtube" in networks else "",
-            "tiktok_title": post["headline"][:90] if "tiktok" in networks else "",
+            # TikTok Title applies to photo posts only
+            "tiktok_title": post["headline"][:90] if "tiktok" in networks and not video else "",
+            # Instagram rejects a single video as a feed POST: videos go out as Reels (also shown on the feed)
+            "ig_type": ("REEL" if video else "POST") if "instagram" in networks else "",
+            "ig_feed": "TRUE" if video and "instagram" in networks else "",
+            "fb_type": ("REEL" if video else "POST") if "facebook" in networks else "",
+            "yt_type": "SHORT" if "youtube" in networks else "",
+            "yt_privacy": "PUBLIC" if "youtube" in networks else "",
         }
         for n in NETWORKS:
             values[n] = "TRUE" if n in networks else "FALSE"
