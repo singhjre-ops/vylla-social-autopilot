@@ -43,6 +43,7 @@ voiceover:
   style: "Say in a warm, confident, conversational tone, at a natural pace:"
 
 # Background music: drop royalty-free tracks (mp3/m4a/wav) into assets/music/. They rotate by day.
+# Credit: put a .txt with the same name next to a track (song.mp3 + song.txt); its text is added to every caption that uses it.
 music:
   volume: 0.15                   # under the voiceover; music-only videos play louder automatically
 
