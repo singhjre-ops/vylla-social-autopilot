@@ -10,7 +10,7 @@ import csv
 import json
 import re
 import shutil
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 from .config import DATA, ROOT
 
@@ -114,7 +114,8 @@ def build_week(cfg, week_start, generate):
         values = {
             "text": post["captions"]["gmb" if networks == ["gmb"] else "long"],
             "date": day.isoformat(),
-            "time": cfg["post_time_local"] + ":00",
+            # Must match the time format picked in Metricool's import dialog (default HH:MM, e.g. 10:00)
+            "time": datetime.strptime(cfg["post_time_local"], "%H:%M").strftime(mc.get("time_format", "%H:%M")),
             "draft": "TRUE" if mc["import_as_draft"] else "FALSE",
             "media": f"{base}/{media_name}",
             "youtube_title": post["headline"][:100] if "youtube" in networks else "",
