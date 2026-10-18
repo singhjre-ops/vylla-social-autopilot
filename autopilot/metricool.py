@@ -70,6 +70,14 @@ def _column(header, key):
             return col
         if key == "tt_privacy" and n.startswith("tiktokpostprivacy"):
             return col
+        if key == "gbp_type" and n in ("gbpposttype", "gmbposttype"):
+            return col
+        if key == "yt_ai" and n == "youtubeaigeneratedcontent":
+            return col
+        if key == "tt_ai" and n == "tiktokaigeneratedcontent":
+            return col
+        if key == "fb_title" and n == "facebooktitle":
+            return col
         if key in ("tt_comments", "tt_duet", "tt_stitch") and n == "tiktokdisable" + key[3:]:
             return col
     return None
@@ -139,6 +147,11 @@ def build_week(cfg, week_start, generate):
             "tt_comments": "FALSE" if "tiktok" in networks else "",
             "tt_duet": "FALSE" if "tiktok" in networks else "",
             "tt_stitch": "FALSE" if "tiktok" in networks else "",
+            "gbp_type": "PUBLICATION" if "gmb" in networks else "",
+            "fb_title": post["headline"][:100] if video and "facebook" in networks else "",
+            # The voiceover is AI-generated speech; disclose it where the platforms ask
+            "yt_ai": ("TRUE" if mc.get("ai_disclosure", True) else "FALSE") if "youtube" in networks else "",
+            "tt_ai": ("TRUE" if mc.get("ai_disclosure", True) else "FALSE") if "tiktok" in networks else "",
         }
         for n in NETWORKS:
             values[n] = "TRUE" if n in networks else "FALSE"
