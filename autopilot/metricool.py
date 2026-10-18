@@ -24,7 +24,9 @@ DEFAULT_HEADER = ["Text", "Date", "Time", "Draft", "Facebook", "Twitter", "Linke
                   "Pinterest", "TikTok", "Youtube", "Threads", "Bluesky", "Picture Url 1",
                   "Youtube Video Title", "Youtube Video For Kids", "TikTok Title", "Brand name",
                   "Instagram Post Type", "Instagram Show Reel On Feed", "Facebook Post Type",
-                  "YouTube Video Type", "YouTube Video Privacy"]
+                  "YouTube Video Type", "YouTube Video Privacy",
+                  "TikTok Post Privacy (personal accounts only)", "TikTok disable comments",
+                  "TikTok disable duet", "TikTok disable stitch"]
 ALIASES = {"gmb": ("gmb", "gbp", "googlebusiness", "googlemybusiness"), "twitter": ("twitter", "twitterx", "x")}
 
 
@@ -65,6 +67,10 @@ def _column(header, key):
         if key == "yt_type" and n == "youtubevideotype":
             return col
         if key == "yt_privacy" and n == "youtubevideoprivacy":
+            return col
+        if key == "tt_privacy" and n.startswith("tiktokpostprivacy"):
+            return col
+        if key in ("tt_comments", "tt_duet", "tt_stitch") and n == "tiktokdisable" + key[3:]:
             return col
     return None
 
@@ -128,6 +134,11 @@ def build_week(cfg, week_start, generate):
             "fb_type": ("REEL" if video else "POST") if "facebook" in networks else "",
             "yt_type": "SHORT" if "youtube" in networks else "",
             "yt_privacy": "PUBLIC" if "youtube" in networks else "",
+            # TikTok auto-publish requires choosing who can see the post
+            "tt_privacy": mc.get("tiktok_privacy", "PUBLIC_TO_EVERYONE") if "tiktok" in networks else "",
+            "tt_comments": "FALSE" if "tiktok" in networks else "",
+            "tt_duet": "FALSE" if "tiktok" in networks else "",
+            "tt_stitch": "FALSE" if "tiktok" in networks else "",
         }
         for n in NETWORKS:
             values[n] = "TRUE" if n in networks else "FALSE"
