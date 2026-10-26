@@ -1,21 +1,47 @@
 {
-  "headline": "Exploring Sandy Hook, Connecticut This Autumn",
-  "subhead": "A closer look at local trails, waterfront parks, and historic village charm.",
-  "caption": "October brings crisp air and vibrant foliage to Sandy Hook, Connecticut. Nestled along the Pootatuck River, this historic village in Newtown features a walkable center with independent shops and riverside dining. Outdoor opportunities abound, from boating and scenic views at Lake Zoar and Eichler's Cove to hiking trails in Rocky Glen State Park and upper Paugussett State Forest. For travel and commuting, Interstate 84 runs directly through the area, providing straightforward connections across Fairfield County and beyond. Whether you are exploring the trails this fall or curious about available properties in the neighborhood, there is plenty to appreciate across the landscape. Reach out today to discuss your next move in the Greater Danbury area.",
-  "short_caption": "Crisp autumn air, scenic trails at Rocky Glen, and riverside dining define Sandy Hook this October. Convenient I-84 access makes travel easy. Connect today to discuss Greater Danbury real estate.",
+  "headline": "Exploring Sandy Hook This Fall",
+  "subhead": "Waterfront recreation, historic village streets, and easy highway routes in Sandy Hook, Connecticut.",
+  "caption": "Sandy Hook offers a distinctive mix of river scenery, lakeside recreation, and convenient regional travel. Located within Newtown, this village sits along Lake Zoar and the Housatonic River, where Lower Paugussett State Forest provides miles of wooded shoreline trails. In the village center, you will find independent eateries and shops beside the Pootatuck River, with straightforward access to Interstate 84 and Route 34 for commuters. October brings crisp weather and bright autumn foliage along the hillsides and Eichler's Cove marina. If you want to explore the current real estate market in Sandy Hook, reach out today to discuss available properties and neighborhood sales.",
+  "short_caption": "Discover Sandy Hook, CT this October: scenic trails at Lake Zoar, local dining in the village, and quick access to I-84. Contact me for local market numbers.",
   "hashtags": [
     "SandyHookCT",
     "NewtownCT",
-    "GreaterDanbury",
-    "CTRealEstate",
-    "FairfieldCountyCT",
-    "SandyHookLiving"
+    "GreaterDanburyRealEstate",
+    "CTRealEstate"
   ],
-  "voiceover": "Crisp October foliage lines the trails along Lake Zoar and Rocky Glen in historic Sandy Hook. Call or text Jaskaran Singh with Vylla Home.",
+  "hook": "Lake Zoar borders eastern Sandy Hook.",
+  "hook_say": "I love showing clients around Sandy Hook, especially along Lake Zoar in October.",
+  "scenes": [
+    {
+      "label": "Outdoors",
+      "title": "Lake Zoar and Paugussett",
+      "detail": "Lower Paugussett State Forest offers waterfront hiking trails and boat access at Eichler's Cove.",
+      "say": "You get hiking trails right along the Housatonic River and boating access at Eichler's Cove."
+    },
+    {
+      "label": "Downtown",
+      "title": "Historic Sandy Hook Village",
+      "detail": "The village center features riverside dining, local shops, and pedestrian sidewalks along the Pootatuck River.",
+      "say": "The village center has local spots to eat right along the Pootatuck River."
+    },
+    {
+      "label": "Transit",
+      "title": "Interstate 84 Access",
+      "detail": "Drivers connect directly to Interstate 84 and Route 34 for travel toward Danbury or Hartford.",
+      "say": "Highway access is straightforward here with Interstate 84 running right through the district."
+    },
+    {
+      "label": "Fall Events",
+      "title": "October Village Gatherings",
+      "detail": "Sandy Hook marks autumn with seasonal business strolls and vibrant fall colors across local parks.",
+      "say": "October brings vibrant foliage across the hills and seasonal events right in the village."
+    }
+  ],
+  "cta_line": "Message me for Sandy Hook home values.",
   "captions": {
-    "long": "October brings crisp air and vibrant foliage to Sandy Hook, Connecticut. Nestled along the Pootatuck River, this historic village in Newtown features a walkable center with independent shops and riverside dining. Outdoor opportunities abound, from boating and scenic views at Lake Zoar and Eichler's Cove to hiking trails in Rocky Glen State Park and upper Paugussett State Forest. For travel and commuting, Interstate 84 runs directly through the area, providing straightforward connections across Fairfield County and beyond. Whether you are exploring the trails this fall or curious about available properties in the neighborhood, there is plenty to appreciate across the landscape. Reach out today to discuss your next move in the Greater Danbury area.\n\n#SandyHookCT #NewtownCT #GreaterDanbury #CTRealEstate #FairfieldCountyCT #SandyHookLiving\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity\n\nMusic: Saturn by Riyhsal https://soundcloud.com/riyhsal\nLicense: Creative Commons \u2014 Attribution 3.0 Unported\nFree Download / Stream: https://links.al/bhS\nMusic promoted by Audio Library: https://links.al/youtube",
-    "short": "Crisp autumn air, scenic trails at Rocky Glen, and riverside dining define Sandy Hook this October. Convenient I-84 access makes travel easy. Connect today to discuss Greater Danbury real estate.\nVylla Home | (475) 400-0661\n\nMusic: Saturn by Riyhsal https://soundcloud.com/riyhsal\nLicense: Creative Commons \u2014 Attribution 3.0 Unported\nFree Download / Stream: https://links.al/bhS\nMusic promoted by Audio Library: https://links.al/youtube",
-    "gmb": "October brings crisp air and vibrant foliage to Sandy Hook, Connecticut. Nestled along the Pootatuck River, this historic village in Newtown features a walkable center with independent shops and riverside dining. Outdoor opportunities abound, from boating and scenic views at Lake Zoar and Eichler's Cove to hiking trails in Rocky Glen State Park and upper Paugussett State Forest. For travel and commuting, Interstate 84 runs directly through the area, providing straightforward connections across Fairfield County and beyond. Whether you are exploring the trails this fall or curious about available properties in the neighborhood, there is plenty to appreciate across the landscape. Reach out today to discuss your next move in the Greater Danbury area.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+    "long": "Sandy Hook offers a distinctive mix of river scenery, lakeside recreation, and convenient regional travel. Located within Newtown, this village sits along Lake Zoar and the Housatonic River, where Lower Paugussett State Forest provides miles of wooded shoreline trails. In the village center, you will find independent eateries and shops beside the Pootatuck River, with straightforward access to Interstate 84 and Route 34 for commuters. October brings crisp weather and bright autumn foliage along the hillsides and Eichler's Cove marina. If you want to explore the current real estate market in Sandy Hook, reach out today to discuss available properties and neighborhood sales.\n\n#SandyHookCT #NewtownCT #GreaterDanburyRealEstate #CTRealEstate\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity\n\nMusic: Saturn by Riyhsal https://soundcloud.com/riyhsal\nLicense: Creative Commons \u2014 Attribution 3.0 Unported\nFree Download / Stream: https://links.al/bhS\nMusic promoted by Audio Library: https://links.al/youtube",
+    "short": "Discover Sandy Hook, CT this October: scenic trails at Lake Zoar, local dining in the village, and quick access to I-84. Contact me for local market numbers.\nVylla Home | (475) 400-0661\n\nMusic: Saturn by Riyhsal https://soundcloud.com/riyhsal\nLicense: Creative Commons \u2014 Attribution 3.0 Unported\nFree Download / Stream: https://links.al/bhS\nMusic promoted by Audio Library: https://links.al/youtube",
+    "gmb": "Sandy Hook offers a distinctive mix of river scenery, lakeside recreation, and convenient regional travel. Located within Newtown, this village sits along Lake Zoar and the Housatonic River, where Lower Paugussett State Forest provides miles of wooded shoreline trails. In the village center, you will find independent eateries and shops beside the Pootatuck River, with straightforward access to Interstate 84 and Route 34 for commuters. October brings crisp weather and bright autumn foliage along the hillsides and Eichler's Cove marina. If you want to explore the current real estate market in Sandy Hook, reach out today to discuss available properties and neighborhood sales.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
   },
   "id": "2026-10-26",
   "theme": "town_spotlight",
@@ -23,5 +49,10 @@
   "source_id": null,
   "problems": [],
   "status": "pending",
-  "music_credit": "Music: Saturn by Riyhsal https://soundcloud.com/riyhsal\nLicense: Creative Commons \u2014 Attribution 3.0 Unported\nFree Download / Stream: https://links.al/bhS\nMusic promoted by Audio Library: https://links.al/youtube"
+  "cta_keyword": "VALUE",
+  "cta_say": "Call or text me, Jaskaran Singh, with Vylla Home.",
+  "voiceover": "I love showing clients around Sandy Hook, especially along Lake Zoar in October. You get hiking trails right along the Housatonic River and boating access at Eichler's Cove. The village center has local spots to eat right along the Pootatuck River. Highway access is straightforward here with Interstate 84 running right through the district. October brings vibrant foliage across the hills and seasonal events right in the village. Call or text me, Jaskaran Singh, with Vylla Home.",
+  "voice_source": "ai",
+  "music_credit": "Music: Saturn by Riyhsal https://soundcloud.com/riyhsal\nLicense: Creative Commons \u2014 Attribution 3.0 Unported\nFree Download / Stream: https://links.al/bhS\nMusic promoted by Audio Library: https://links.al/youtube",
+  "script_msg_id": 11
 }

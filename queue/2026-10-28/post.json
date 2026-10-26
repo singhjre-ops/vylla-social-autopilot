@@ -1,22 +1,47 @@
 {
-  "headline": "Newtown Home Buying Tip",
-  "subhead": "Understand Connecticut property taxes and mill rates before you make an offer.",
-  "caption": "October is a wonderful time to look at homes in Newtown, CT, but as you tour properties, remember to factor in local property taxes. In Connecticut, towns fund public services through property taxes based on local mill rates. When you are looking at homes, checking the specific mill rate for Newtown helps you calculate a more accurate monthly payment so there are no surprises after closing. A clear budget makes the whole purchasing process much smoother. If you have questions about navigating the local market this season, feel free to reach out. Call or text Jaskaran Singh with Vylla Home.",
-  "short_caption": "Buying a home in Newtown this October? Factor in local mill rates and property taxes early to keep your monthly budget accurate and predictable.",
+  "headline": "Understand Newtown's Property Taxes",
+  "subhead": "Learn how the mill rate affects your monthly housing budget in Newtown.",
+  "caption": "When buying a home in Newtown, Connecticut this October, understanding local property taxes is a key step in calculating your true monthly payment. Property taxes are based on the town's mill rate, which is applied to seventy percent of your home's assessed value. Reviewing recent tax history for specific properties helps you plan your budget accurately before making an offer. As a local REALTOR\u00ae with Vylla Home, I can help you find the exact tax figures for any address you are considering in the Greater Danbury area. Reach out today to get the numbers on a home in Newtown.",
+  "short_caption": "Understand Newtown's mill rate to accurately calculate your monthly property taxes this October. Reach out for local data.",
   "hashtags": [
     "NewtownCT",
-    "ConnecticutRealEstate",
     "GreaterDanbury",
-    "HomeBuyingTips",
-    "CTRealEstate",
-    "VyllaHome",
-    "NewtownHomes"
+    "ConnecticutRealEstate",
+    "VyllaHome"
   ],
-  "voiceover": "As the leaves change in Newtown, check local mill rates and property taxes early to keep your monthly budget accurate. Call or text Jaskaran Singh with Vylla Home.",
+  "hook": "Newtown taxes rely on mill rates.",
+  "hook_say": "Newtown property taxes rely directly on the town's current mill rate.",
+  "scenes": [
+    {
+      "label": "Mill Rate",
+      "title": "Understanding Local Tax Rates",
+      "detail": "Newtown property taxes are calculated using the town mill rate applied to assessed values.",
+      "say": "The town applies the mill rate to seventy percent of the assessed property value."
+    },
+    {
+      "label": "Assessments",
+      "title": "Property Assessment Schedule",
+      "detail": "Connecticut municipalities conduct periodic revaluations to update property assessments for taxation.",
+      "say": "Connecticut towns update these property assessments periodically through local revaluation cycles."
+    },
+    {
+      "label": "Budgeting",
+      "title": "Monthly Payment Planning",
+      "detail": "Lenders collect property tax portions monthly into an escrow account alongside homeowner insurance.",
+      "say": "Your mortgage lender collects this tax amount monthly into your standard escrow account."
+    },
+    {
+      "label": "Local Data",
+      "title": "Checking Specific Homes",
+      "detail": "Verify individual property tax cards directly through the Newtown tax assessor public records.",
+      "say": "I always check the specific property tax records directly with the town assessor's office."
+    }
+  ],
+  "cta_line": "Ask for the numbers on a Newtown home.",
   "captions": {
-    "long": "October is a wonderful time to look at homes in Newtown, CT, but as you tour properties, remember to factor in local property taxes. In Connecticut, towns fund public services through property taxes based on local mill rates. When you are looking at homes, checking the specific mill rate for Newtown helps you calculate a more accurate monthly payment so there are no surprises after closing. A clear budget makes the whole purchasing process much smoother. If you have questions about navigating the local market this season, feel free to reach out. Call or text Jaskaran Singh with Vylla Home.\n\n#NewtownCT #ConnecticutRealEstate #GreaterDanbury #HomeBuyingTips #CTRealEstate #VyllaHome #NewtownHomes\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity\n\nMusic: Sunday Morning by Mehul Choudhary https://soundcloud.com/mehulchoudhary\nLicense: Creative Commons \u2014 Attribution 3.0 Unported \u2014 CC BY 3.0\nFree Download / Stream: https://links.al/tZm\nMusic promoted by Audio Library: https://links.al/youtube",
-    "short": "Buying a home in Newtown this October? Factor in local mill rates and property taxes early to keep your monthly budget accurate and predictable.\nVylla Home | (475) 400-0661\n\nMusic: Sunday Morning by Mehul Choudhary https://soundcloud.com/mehulchoudhary\nLicense: Creative Commons \u2014 Attribution 3.0 Unported \u2014 CC BY 3.0\nFree Download / Stream: https://links.al/tZm\nMusic promoted by Audio Library: https://links.al/youtube",
-    "gmb": "October is a wonderful time to look at homes in Newtown, CT, but as you tour properties, remember to factor in local property taxes. In Connecticut, towns fund public services through property taxes based on local mill rates. When you are looking at homes, checking the specific mill rate for Newtown helps you calculate a more accurate monthly payment so there are no surprises after closing. A clear budget makes the whole purchasing process much smoother. If you have questions about navigating the local market this season, feel free to reach out. Call or text Jaskaran Singh with Vylla Home.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+    "long": "When buying a home in Newtown, Connecticut this October, understanding local property taxes is a key step in calculating your true monthly payment. Property taxes are based on the town's mill rate, which is applied to seventy percent of your home's assessed value. Reviewing recent tax history for specific properties helps you plan your budget accurately before making an offer. As a local REALTOR\u00ae with Vylla Home, I can help you find the exact tax figures for any address you are considering in the Greater Danbury area. Reach out today to get the numbers on a home in Newtown.\n\n#NewtownCT #GreaterDanbury #ConnecticutRealEstate #VyllaHome\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity\n\nMusic: Sunday Morning by Mehul Choudhary https://soundcloud.com/mehulchoudhary\nLicense: Creative Commons \u2014 Attribution 3.0 Unported \u2014 CC BY 3.0\nFree Download / Stream: https://links.al/tZm\nMusic promoted by Audio Library: https://links.al/youtube",
+    "short": "Understand Newtown's mill rate to accurately calculate your monthly property taxes this October. Reach out for local data.\nVylla Home | (475) 400-0661\n\nMusic: Sunday Morning by Mehul Choudhary https://soundcloud.com/mehulchoudhary\nLicense: Creative Commons \u2014 Attribution 3.0 Unported \u2014 CC BY 3.0\nFree Download / Stream: https://links.al/tZm\nMusic promoted by Audio Library: https://links.al/youtube",
+    "gmb": "When buying a home in Newtown, Connecticut this October, understanding local property taxes is a key step in calculating your true monthly payment. Property taxes are based on the town's mill rate, which is applied to seventy percent of your home's assessed value. Reviewing recent tax history for specific properties helps you plan your budget accurately before making an offer. As a local REALTOR\u00ae with Vylla Home, I can help you find the exact tax figures for any address you are considering in the Greater Danbury area. Reach out today to get the numbers on a home in Newtown.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
   },
   "id": "2026-10-28",
   "theme": "buyer_tip",
@@ -24,5 +49,10 @@
   "source_id": null,
   "problems": [],
   "status": "pending",
-  "music_credit": "Music: Sunday Morning by Mehul Choudhary https://soundcloud.com/mehulchoudhary\nLicense: Creative Commons \u2014 Attribution 3.0 Unported \u2014 CC BY 3.0\nFree Download / Stream: https://links.al/tZm\nMusic promoted by Audio Library: https://links.al/youtube"
+  "cta_keyword": "VALUE",
+  "cta_say": "Call or text me, Jaskaran Singh, with Vylla Home.",
+  "voiceover": "Newtown property taxes rely directly on the town's current mill rate. The town applies the mill rate to seventy percent of the assessed property value. Connecticut towns update these property assessments periodically through local revaluation cycles. Your mortgage lender collects this tax amount monthly into your standard escrow account. I always check the specific property tax records directly with the town assessor's office. Call or text me, Jaskaran Singh, with Vylla Home.",
+  "voice_source": "ai",
+  "music_credit": "Music: Sunday Morning by Mehul Choudhary https://soundcloud.com/mehulchoudhary\nLicense: Creative Commons \u2014 Attribution 3.0 Unported \u2014 CC BY 3.0\nFree Download / Stream: https://links.al/tZm\nMusic promoted by Audio Library: https://links.al/youtube",
+  "script_msg_id": 12
 }
