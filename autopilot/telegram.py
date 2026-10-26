@@ -1,6 +1,7 @@
 """Approval by Telegram: you get each draft on your phone with Approve / Skip buttons."""
 
 import os
+from pathlib import Path
 
 import requests
 
@@ -55,3 +56,33 @@ def send_document(path, caption):
 def notify(text):
     if os.environ.get("TELEGRAM_BOT_TOKEN"):
         _call("sendMessage", json={"chat_id": os.environ["TELEGRAM_CHAT_ID"], "text": text})
+
+
+def send_text(text, reply_to=None):
+    """Send a message to your chat and return its message_id."""
+    body = {"chat_id": os.environ["TELEGRAM_CHAT_ID"], "text": text[:4000]}
+    if reply_to:
+        body["reply_to_message_id"] = reply_to
+    return _call("sendMessage", json=body)["message_id"]
+
+
+def get_messages(offset):
+    """New messages from your own chat since `offset`. Returns (messages, next_offset)."""
+    chat = str(os.environ["TELEGRAM_CHAT_ID"])
+    updates = _call("getUpdates", json={"offset": offset, "allowed_updates": ["message"], "timeout": 0})
+    msgs, nxt = [], offset
+    for u in updates:
+        nxt = max(nxt, u["update_id"] + 1)
+        m = u.get("message")
+        if m and str(m["chat"]["id"]) == chat:
+            msgs.append(m)
+    return msgs, nxt
+
+
+def download(file_id, dest):
+    token = os.environ["TELEGRAM_BOT_TOKEN"]
+    path = _call("getFile", json={"file_id": file_id})["file_path"]
+    r = requests.get(f"https://api.telegram.org/file/bot{token}/{path}", timeout=120)
+    r.raise_for_status()
+    Path(dest).write_bytes(r.content)
+    return Path(dest)

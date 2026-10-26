@@ -29,7 +29,10 @@ def check(post, cfg):
     """Return a list of problems. An empty list means the post passed."""
     problems = []
     text = " ".join([post["headline"], post["subhead"], post["caption"], post["short_caption"],
-                     post.get("voiceover", ""),
+                     post.get("voiceover", ""), post.get("hook", ""), post.get("hook_say", ""),
+                     post.get("cta_line", ""),
+                     " ".join(" ".join(str(v) for v in sc.values()) for sc in post.get("scenes", [])
+                              if isinstance(sc, dict)),
                      " ".join(post["hashtags"])])
     for pattern in BLOCKED:
         m = re.search(pattern, text, re.IGNORECASE)

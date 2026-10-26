@@ -25,10 +25,19 @@ Return JSON only, with these keys:
   "subhead": max 14 words for the graphic,
   "caption": 80-150 words for Facebook, Instagram and Google Business Profile, ending with a call to action,
   "short_caption": max 220 characters for X and TikTok,
-  "hashtags": list of 5-8 hashtags without the # sign, local where possible,
-  "voiceover": a 20-28 word script read aloud over the short video (about 9 seconds). Open with a specific local
-    hook (a landmark, season detail or useful fact), not a greeting. Speak as a narrator, not as the agent, and end
-    with: "Call or text Jaskaran Singh with Vylla Home."
+  "hashtags": list of 3-5 hashtags without the # sign, local where possible,
+  "hook": max 7 words, the opening line on screen. Lead with the most specific fact or number you were given.
+    Never a question like "Thinking of moving?" and never a greeting,
+  "hook_say": the spoken hook, one sentence of max 14 words,
+  "scenes": exactly 4 objects, each with
+      "label": a 1-2 word topic (e.g. "Commute", "Outdoors", "Pricing"),
+      "title": 2-6 words,
+      "detail": 8-16 words of concrete, checkable information (names of places, roads, programs),
+      "say": one spoken sentence of 10-18 words that covers this scene.
+    Each scene must add a new specific fact; no filler scenes,
+  "cta_line": max 8 words inviting them to ask for the numbers on a home in this town.
+Write "hook_say" and every "say" line in first person, as Jaskaran would say it out loud on camera: short,
+natural, contractions, no jargon. He records these lines himself.
 Do not include phone numbers, disclaimers or the brokerage line; they are added later."""
 
 

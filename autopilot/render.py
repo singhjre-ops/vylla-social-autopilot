@@ -31,64 +31,70 @@ def _wrap(draw, text, font, max_width):
 
 
 def render(post, theme_label, town, cfg, out_path, size=(1080, 1350), photo_url=None):
-    b = cfg["brand"]
+    """White, Apple-style graphic: gold label pill, big Inter headline, 3D house or listing photo, clean footer."""
+    from .motion import render_house, font as ifont
     w, h = size
-    img = Image.new("RGB", size, b["charcoal"])
+    ink, sub, gold = (29, 29, 31), (110, 110, 115), (255, 176, 0)
+    img = Image.new("RGBA", size, (255, 255, 255, 255))
     draw = ImageDraw.Draw(img)
-    pad = int(w * 0.08)
+    for y in range(h):  # soft white-to-grey wash
+        k = y / h
+        draw.line([0, y, w, y], fill=(int(255 - 10 * k), int(255 - 10 * k), int(255 - 8 * k), 255))
+    pad = int(w * 0.09)
+    vertical = h > w * 1.5
+    y = int(h * (0.13 if vertical else 0.1))
 
-    # Listing photo on the top half when one is available.
-    vertical = h > w * 1.5  # TikTok / Shorts: app buttons cover the bottom ~20%
-    text_top = int(h * (0.3 if vertical else 0.22))
+    label = f"{theme_label}  ·  {town.upper()}, CT"
+    lf = ifont("Bold", int(w * 0.03))
+    tw = draw.textlength(label, font=lf)
+    ph = int(w * 0.03) + 30
+    draw.rounded_rectangle([pad, y, pad + tw + 48, y + ph], radius=ph / 2, fill=gold)
+    draw.text((pad + 24, y + ph / 2), label, font=lf, fill=ink, anchor="lm")
+    y += ph + int(h * 0.035)
+
+    hf = ifont("ExtraBold", int(w * 0.085))
+    for line in _wrap(draw, post.get("hook") or post["headline"], hf, w - 2 * pad):
+        draw.text((pad, y), line, font=hf, fill=ink)
+        y += int(hf.size * 1.08)
+    draw.rounded_rectangle([pad, y + 18, pad + 150, y + 28], radius=5, fill=gold)
+    y += 60
+    sf = ifont("Medium", int(w * 0.042))
+    for line in _wrap(draw, post["subhead"], sf, w - 2 * pad):
+        draw.text((pad, y), line, font=sf, fill=sub)
+        y += int(sf.size * 1.35)
+
+    foot = h - int(h * (0.2 if vertical else 0.15))
+    visual_top, visual_h = y + int(h * 0.03), foot - y - int(h * 0.05)
     if photo_url:
         try:
             photo = Image.open(io.BytesIO(requests.get(photo_url, timeout=30).content)).convert("RGB")
-            photo_h = int(h * 0.5)
-            img.paste(ImageOps.fit(photo, (w, photo_h)), (0, 0))
-            text_top = photo_h + int(h * 0.05)
+            ph_w = w - 2 * pad
+            card = ImageOps.fit(photo, (ph_w, max(visual_h, 200)))
+            mask = Image.new("L", card.size, 0)
+            ImageDraw.Draw(mask).rounded_rectangle([0, 0, card.width, card.height], radius=36, fill=255)
+            img.paste(card, (pad, visual_top), mask)
         except Exception as e:  # a bad photo should not stop the post
             print(f"photo skipped: {e}")
+            photo_url = None
+    if not photo_url and visual_h > 220:
+        side = min(visual_h + 120, w - 2 * pad)
+        house = render_house(28, size=side)
+        img.alpha_composite(house, ((w - side) // 2, visual_top - 60))
 
-    # Theme label with New Day accent bar.
-    label_font = _font("Roboto-Bold.ttf", int(w * 0.03))
-    label_y = text_top - int(h * 0.07)
-    draw.rectangle([pad, label_y, pad + int(w * 0.06), label_y + 8], fill=b["new_day"])
-    draw.text((pad, label_y + 24), f"{theme_label}  ·  {town.upper()}, CT", font=label_font, fill=b["new_day"])
-
-    # Headline, then subhead.
-    max_w = w - 2 * pad
-    head_size = int(w * (0.075 if not photo_url else 0.06))
-    head_font = _font("LibreBaskerville-Regular.ttf", head_size)
-    y = label_y + 90
-    for line in _wrap(draw, post["headline"], head_font, max_w):
-        draw.text((pad, y), line, font=head_font, fill=b["cream"])
-        y += int(head_size * 1.3)
-    y += int(h * 0.025)
-    sub_font = _font("Roboto-Light.ttf", int(w * 0.038))
-    for line in _wrap(draw, post["subhead"], sub_font, max_w):
-        draw.text((pad, y), line, font=sub_font, fill=b["cream"])
-        y += int(w * 0.052)
-
-    # Footer: agent, brokerage, phone, logo (CT requires brokerage name on ads).
+    draw.line([pad, foot, w - pad, foot], fill=(222, 222, 228), width=2)
     agent = cfg["agent"]
-    foot_y = h - int(h * (0.24 if vertical else 0.12))
-    draw.line([pad, foot_y - 30, w - pad, foot_y - 30], fill=b["grey"], width=2)
-    name_font = _font("Roboto-Bold.ttf", int(w * 0.032))
-    info_font = _font("Roboto-Light.ttf", int(w * 0.026))
-    draw.text((pad, foot_y), f"{agent['name']}, {agent['title']}", font=name_font, fill=b["cream"])
-    draw.text((pad, foot_y + int(w * 0.045)), f"{agent['website']}  ·  {agent['phone']}", font=info_font,
-              fill=b["cream"])
-    small_font = _font("Roboto-Light.ttf", int(w * 0.021))
+    draw.text((pad, foot + int(h * 0.02)), "@jaskaranrealtor", font=ifont("Bold", int(w * 0.03)), fill=ink)
+    draw.text((pad, foot + int(h * 0.02) + int(w * 0.045)), f"{agent['website']}  ·  {agent['phone']}",
+              font=ifont("Regular", int(w * 0.025)), fill=ink)
     lic = agent.get("license")
-    legal = f"Brokered by {agent['brokerage']}  ·  CT Lic# {lic}  ·  Equal Housing Opportunity" if lic \
-        else "Equal Housing Opportunity"
-    draw.text((pad, foot_y + int(w * 0.085)), legal, font=small_font, fill=b["cream"])
-    logo = Image.open(ASSETS / "logos" / "logo_white.png")
-    logo_w = int(w * 0.26)
-    logo = logo.resize((logo_w, int(logo.height * logo_w / logo.width)))
-    img.paste(logo, (w - pad - logo_w, foot_y + 5), logo)
-
-    img.save(out_path, quality=92)
+    legal = (f"Brokered by {agent['brokerage']}  ·  CT Lic# {lic}  ·  Equal Housing Opportunity" if lic
+             else f"Brokered by {agent['brokerage']}  ·  Equal Housing Opportunity")
+    draw.text((pad, foot + int(h * 0.02) + int(w * 0.085)), legal, font=ifont("Regular", int(w * 0.02)), fill=sub)
+    logo = Image.open(ASSETS / "logos" / "logo_black.png").convert("RGBA")
+    lw = int(w * 0.2)
+    logo = logo.resize((lw, int(logo.height * lw / logo.width)))
+    img.alpha_composite(logo, (w - pad - lw, foot + int(h * 0.025)))
+    img.convert("RGB").save(out_path, quality=92)
     return out_path
 
 

@@ -1,6 +1,7 @@
 """Social autopilot.
 
   python -m autopilot.main week              build next week's posts as a Metricool CSV (free plan)
+  python -m autopilot.main voices            pick up your Telegram voice notes and rebuild those videos
 
   python -m autopilot.main generate          make today's draft and send it for approval
   python -m autopilot.main publish           post today's draft once approved and past post time
@@ -16,7 +17,7 @@ import os
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from . import audio, compliance, gemini, metricool, telegram
+from . import audio, compliance, gemini, metricool, motion, telegram
 from .config import DATA, QUEUE, load_config, load_env
 from .publishers import list_zernio_accounts, publish
 from .render import make_video, render
@@ -32,6 +33,19 @@ SAMPLE = {
     "hashtags": ["SouthburyCT", "LakeZoar", "CTRealEstate", "LitchfieldHills", "FallInCT"],
     "voiceover": "Fall in Southbury means Lake Zoar trails and bright back roads. Thinking about a move? "
                  "Call or text Jaskaran Singh with Vylla Home.",
+    "hook": "Southbury in four quick facts.",
+    "hook_say": "Here's Southbury in four quick facts.",
+    "scenes": [
+        {"label": "Outdoors", "title": "Kettletown State Park", "detail": "Hiking trails and a swim area on the shore of Lake Zoar.",
+         "say": "Kettletown State Park puts trails and a swim beach right on Lake Zoar."},
+        {"label": "Commute", "title": "Right off I-84", "detail": "Highway access toward Danbury and Waterbury.",
+         "say": "You're right off I-84, so Danbury and Waterbury are an easy drive."},
+        {"label": "Town center", "title": "Main Street South", "detail": "Shops, dining and the town green along Route 6.",
+         "say": "Main Street South has the shops, the dining and the town green."},
+        {"label": "Seasonal", "title": "Fall back roads", "detail": "Farm stands and foliage drives through the Pomperaug valley.",
+         "say": "And in the fall, the back roads and farm stands are hard to beat."},
+    ],
+    "cta_line": "Want the numbers on a Southbury home?",
 }
 
 
@@ -113,14 +127,26 @@ def generate(cfg, today, sample=False, notify=True):
     label = THEMES[theme]["label"]
     render(post, label, facts["town"], cfg, out / "feed.jpg", photo_url=facts.get("photo_url"))
     render(post, label, facts["town"], cfg, out / "vertical.jpg", size=(1080, 1920), photo_url=facts.get("photo_url"))
-    voice = None
+    has_scenes = isinstance(post.get("scenes"), list) and len(post["scenes"]) >= 2 and \
+        all(isinstance(sc, dict) and sc.get("title") for sc in post["scenes"])
+    if has_scenes:
+        post.setdefault("hook", post["headline"])
+        post.setdefault("cta_line", f"Want the numbers on a {facts['town']} home?")
+        post["cta_keyword"] = cfg.get("video", {}).get("cta_keyword", "VALUE")
+        post["cta_say"] = cfg.get("video", {}).get("cta_say", "Call or text me, Jaskaran Singh, with Vylla Home.")
+        post["voiceover"] = motion.spoken_script(post)
+    voice, post["voice_source"] = None, "none"
     try:
         voice = audio.voiceover(cfg, post.get("voiceover"), out / "voice.wav")
+        post["voice_source"] = "ai" if voice else "none"
     except Exception as e:  # never let audio break the post
         print(f"voiceover failed: {e}")
     music = audio.pick_music(today.toordinal())
-    make_video(out / "vertical.jpg", out / "vertical.mp4", voice=voice, music=music,
-               music_volume=cfg.get("music", {}).get("volume", 0.15))
+    vol = cfg.get("music", {}).get("volume", 0.15)
+    if has_scenes:
+        motion.render_motion(post, out / "vertical.mp4", voice=voice, music=music, music_volume=vol)
+    else:
+        make_video(out / "vertical.jpg", out / "vertical.mp4", voice=voice, music=music, music_volume=vol)
     credit = audio.music_credit(music)
     if credit:  # CC BY license: credit the artist wherever the video is posted
         post["music_credit"] = credit
@@ -189,12 +215,114 @@ def build_week(cfg, today, sample=False):
     print(summary)
     print(out)
     if os.environ.get("TELEGRAM_BOT_TOKEN"):
-        telegram.send_document(out, summary + "\nImport it in Metricool: Calendar > Import CSV.")
+        video_days = send_scripts(cfg, week_start)
+        note = ("\nRecord your voice first (scripts below), then import this file. "
+                "If you skip a script, that video keeps the AI voice.") if video_days else ""
+        telegram.send_document(out, summary + note + "\nImport it in Metricool: Calendar > Import CSV.")
+
+
+def _week_video_dirs(cfg, week_start):
+    dirs = []
+    for offset in range(7):
+        day = week_start + timedelta(days=offset)
+        nets = cfg["metricool"]["schedule"].get(day.weekday())
+        d = QUEUE / day.isoformat()
+        if nets and "gmb" not in nets and (d / "post.json").exists():
+            post = json.loads((d / "post.json").read_text())
+            if post.get("scenes"):
+                dirs.append((day, d, post))
+    return dirs
+
+
+def send_scripts(cfg, week_start):
+    """Send each video's script to Telegram. Reply to a script with a voice note to use your own voice."""
+    dirs = _week_video_dirs(cfg, week_start)
+    if not dirs:
+        return []
+    telegram.send_text(
+        f"🎙 Your scripts for the week of {week_start:%b %d}. For each one: tap Reply, hold the mic, "
+        "read it naturally (about 15-20 seconds), send. I'll rebuild that video with your voice within "
+        "about 30 minutes. Quiet room, phone 6 inches from your mouth.")
+    for day, d, post in dirs:
+        text = (f"{day:%a %b %d} · {post['town']}\n\n" + motion.spoken_script(post) +
+                "\n\n↩️ Reply to this message with your voice note.")
+        post["script_msg_id"] = telegram.send_text(text)
+        (d / "post.json").write_text(json.dumps(post, indent=2))
+    return [day for day, _, _ in dirs]
+
+
+def _clean_voice(src, dest):
+    """Trim silence at both ends, cut rumble, even out loudness."""
+    import subprocess
+    af = ("silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.15,areverse,"
+          "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.2,areverse,"
+          "highpass=f=80,loudnorm=I=-16:TP=-1.5:LRA=11")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-af", af, "-ar", "48000", "-ac", "1",
+                    str(dest)], check=True)
+    return dest
+
+
+def rebuild_with_voice(cfg, day, d, post):
+    voice = d / "my_voice.wav"
+    music = audio.pick_music(day.toordinal())
+    motion.render_motion(post, d / "vertical.mp4", voice=voice, music=music,
+                         music_volume=cfg.get("music", {}).get("volume", 0.15))
+    media = metricool.MEDIA_DIR / f"{day.isoformat()}.mp4"
+    if media.parent.exists():
+        import shutil
+        shutil.copy(d / "vertical.mp4", media)
+    post["voice_source"] = "jaskaran"
+    (d / "post.json").write_text(json.dumps(post, indent=2))
+
+
+def process_voices(cfg):
+    """Pick up voice notes sent to the bot and rebuild the matching videos."""
+    state_file = DATA / "telegram_state.json"
+    state = json.loads(state_file.read_text()) if state_file.exists() else {"offset": 0}
+    msgs, state["offset"] = telegram.get_messages(state.get("offset", 0))
+    pending = {}
+    for p in sorted(QUEUE.glob("*/post.json")):
+        post = json.loads(p.read_text())
+        if post.get("script_msg_id"):
+            pending[post["script_msg_id"]] = (datetime.fromisoformat(post["id"]).date(), p.parent, post)
+    done = []
+    for m in msgs:
+        media = m.get("voice") or m.get("audio") or m.get("video_note")
+        if not media:
+            continue
+        target = pending.get((m.get("reply_to_message") or {}).get("message_id"))
+        if not target:  # not a reply: use it for the earliest script still on the AI voice
+            open_ones = [v for v in pending.values() if v[2].get("voice_source") != "jaskaran"
+                         and v[0] >= datetime.now(ZoneInfo(cfg["timezone"])).date()]
+            target = min(open_ones, key=lambda v: v[0]) if open_ones else None
+        if not target:
+            telegram.send_text("I couldn't tell which script that voice note was for. "
+                               "Please reply directly to the script message.", reply_to=m["message_id"])
+            continue
+        day, d, post = target
+        raw = telegram.download(media["file_id"], d / "my_voice_raw.ogg")
+        _clean_voice(raw, d / "my_voice.wav")
+        raw.unlink(missing_ok=True)
+        rebuild_with_voice(cfg, day, d, post)
+        done.append(day)
+        left = [v for v in pending.values() if v[2].get("voice_source") != "jaskaran" and v[0] >= day - timedelta(days=7)]
+        telegram.send_text(f"✅ Got it: {day:%a %b %d} ({post['town']}) now uses your voice. "
+                           + (f"{len(left)} script(s) left." if left else "All scripts done."),
+                           reply_to=m["message_id"])
+    state_file.write_text(json.dumps(state, indent=2))
+    if done:
+        week_start = min(done) - timedelta(days=min(done).weekday())
+        csv_path = metricool.EXPORTS / f"metricool-week-{week_start.isoformat()}.csv"
+        if csv_path.exists():
+            telegram.send_document(csv_path, "Videos updated with your voice. Give it ~2 minutes to go live, "
+                                             "then import this file in Metricool (delete any drafts you "
+                                             "imported before recording).")
+    print(f"voices processed: {[d.isoformat() for d in done]}")
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["week", "generate", "publish", "approve", "skip", "accounts"])
+    parser.add_argument("command", choices=["week", "generate", "publish", "approve", "skip", "accounts", "voices"])
     parser.add_argument("--sample", action="store_true", help="use a canned post instead of Gemini")
     parser.add_argument("--date", help="YYYY-MM-DD, defaults to today")
     args = parser.parse_args()
@@ -210,6 +338,8 @@ def main():
         generate(cfg, now.date(), sample=args.sample)
     elif args.command == "publish":
         publish_due(cfg, now)
+    elif args.command == "voices":
+        process_voices(cfg)
     elif args.command == "accounts":
         list_zernio_accounts()
     else:
