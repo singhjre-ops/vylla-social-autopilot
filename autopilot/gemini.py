@@ -31,7 +31,7 @@ Return JSON only, with these keys:
   "hook_say": the spoken hook, one sentence of max 14 words,
   "scenes": exactly 4 objects, each with
       "label": a 1-2 word topic (e.g. "Commute", "Outdoors", "Pricing"),
-      "title": 2-6 words,
+      "title": 2-4 words, punchy; use a number or proper name when you have one,
       "detail": 8-16 words of concrete, checkable information (names of places, roads, programs),
       "say": one spoken sentence of 10-18 words that covers this scene.
     Each scene must add a new specific fact; no filler scenes,

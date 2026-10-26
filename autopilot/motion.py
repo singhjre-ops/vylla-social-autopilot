@@ -319,12 +319,13 @@ def draw_icon(d, kind, cx, cy, r, p):
         d.ellipse([cx - r * .15, cy - r * .35, cx + r * .15, cy - r * .05], fill=GOLD)
 
 
-def visual_card(img, sc, idx, t):
+def visual_card(img, sc, idx, t, top=0):
     """Lower half: a floating gold disc with an icon, the step number beside it."""
     p = ease_back((t - 0.35) / 0.7)
     if p <= 0:
         return
-    cx, cy, r = 330, 1190, 230
+    r = 230
+    cx, cy = 330, int(min(1520, max(1190, top + 90 + r)))
     bob = 10 * math.sin(t * 2.2)
     rr = r * p
     sh = Image.new("RGBA", (int(r * 2.6), int(r * 0.7)), (0, 0, 0, 0))
@@ -343,18 +344,21 @@ def visual_card(img, sc, idx, t):
     layer = Image.new("RGBA", (W, 460), (0, 0, 0, 0))
     ImageDraw.Draw(layer).text((W - SAFE_X + 20, 230), f"{idx + 1:02d}", font=font("Black", 330),
                                fill=(220, 220, 226, int(255 * q)), anchor="rm")
-    img.alpha_composite(layer, (int(80 * (1 - q)), 960))
+    img.alpha_composite(layer, (int(80 * (1 - q)), cy - 230))
 
 
 def draw_scene(img, sc, idx, n, t):
     progress_dots(img, n, idx, t)
     pill(img, SAFE_X, 300, sc["label"].upper(), t - 0.05)
-    y = text_block(img, SAFE_X, 420, sc["title"], font("ExtraBold", 104), INK, W - 2 * SAFE_X, t - 0.2, lh=1.05)
+    tf = font("ExtraBold", 104)
+    if len(wrap(ImageDraw.Draw(img), sc["title"], tf, W - 2 * SAFE_X)) > 2:
+        tf = font("ExtraBold", 84)
+    y = text_block(img, SAFE_X, 420, sc["title"], tf, INK, W - 2 * SAFE_X, t - 0.2, lh=1.05)
     rp = ease_in_out((t - 0.5) / 0.5)
     if rp > 0:
         ImageDraw.Draw(img).rounded_rectangle([SAFE_X, y + 28, SAFE_X + 160 * rp, y + 38], radius=5, fill=GOLD)
-    text_block(img, SAFE_X, y + 80, sc["detail"], font("Medium", 54), SUB, W - 2 * SAFE_X - 20, t - 0.6, lh=1.3)
-    visual_card(img, sc, idx, t)
+    y2 = text_block(img, SAFE_X, y + 80, sc["detail"], font("Medium", 54), SUB, W - 2 * SAFE_X - 20, t - 0.6, lh=1.3)
+    visual_card(img, sc, idx, t, y2)
 
 
 def draw_end(img, post, t, logo):
