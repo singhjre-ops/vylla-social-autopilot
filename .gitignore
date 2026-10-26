@@ -2,3 +2,6 @@
 .env
 __pycache__/
 .DS_Store
+
+# your raw voice notes stay out of the public repo (only the finished videos are published)
+queue/*/my_voice*
