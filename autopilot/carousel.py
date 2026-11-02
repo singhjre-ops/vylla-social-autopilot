@@ -69,7 +69,14 @@ h2{font-weight:800;font-size:76px;line-height:1.05;letter-spacing:-2.4px;margin-
 .one .big{font-size:170px;margin-top:30px}.one .cards{margin-top:36px}.one h1{font-size:84px}
 .foot img{height:70px}
 """
-CSS += ".big.m{font-size:170px;letter-spacing:-7px}.big.s{font-size:120px;letter-spacing:-4px}"
+CSS += (".big.m{font-size:170px;letter-spacing:-7px}.big.s{font-size:120px;letter-spacing:-4px}"
+        "h1.long{font-size:76px;letter-spacing:-2.4px}h2.long{font-size:62px}"
+        ".list.tight .row{padding:18px 0}.list.tight .k{font-size:42px;min-width:340px;white-space:nowrap}.list.tight .v{font-size:32px}")
+
+
+def _clip(s, words):
+    w = str(s or "").split()
+    return " ".join(w[:words]) + ("..." if len(w) > words and words > 12 else "")
 
 
 def e(s):
@@ -85,25 +92,30 @@ def _big(v):
 
 
 def _rows(rows, check=False):
-    out = '<div class="list chk">' if check else '<div class="list">'
-    for r in rows or []:
+    rows = (rows or [])[:6]
+    tight = len(rows) > 4 or any(len(str((r[0] if isinstance(r, list) else "") or "")) > 10 for r in rows)
+    out = '<div class="list chk">' if check else f'<div class="list{" tight" if tight else ""}">'
+    for r in rows:
         if isinstance(r, dict):
             r = [r.get("key") or r.get("k") or "", r.get("value") or r.get("v") or ""]
         if len(r) >= 2:
-            out += f'<div class="row"><div class="k">{e(r[0])}</div><div class="v">{e(r[1])}</div></div>'
+            out += f'<div class="row"><div class="k">{e(_clip(r[0], 3))}</div><div class="v">{e(_clip(r[1], 8))}</div></div>'
     return out + "</div>"
 
 
 def slide_bodies(post):
     """Turn Gemini's carousel JSON into slide bodies (cover, content slides, recap, CTA)."""
     bodies = []
-    bodies.append(f'<h1>{e(post["headline"])}<span class="g">{e(post.get("headline2", ""))}</span></h1>'
+    h1, h1g = _clip(post["headline"], 6), _clip(post.get("headline2", ""), 6)
+    long = " class=\"long\"" if len(h1) + len(h1g) > 34 else ""
+    bodies.append(f'<h1{long}>{e(h1)}<span class="g">{e(h1g)}</span></h1>'
                   f'{_big(post.get("big"))}<div class="cap">{e(post.get("subhead", ""))}</div>')
     for s in post.get("slides", []):
-        big, title, text = str(s.get("big") or "").strip(), s.get("title", ""), s.get("text", "")
+        big, title, text = str(s.get("big") or "").strip(), _clip(s.get("title", ""), 6), _clip(s.get("text", ""), 30)
         numbered = bool(re.fullmatch(r"\d{1,2}", big))
         if numbered:          # numbered slide: 01, 02...
-            body = f'<div class="big">{e(big.zfill(2))}</div><h2>{e(title)}</h2>'
+            h2 = '<h2 class="long">' if len(title) > 22 else "<h2>"
+            body = f'<div class="big">{e(big.zfill(2))}</div>{h2}{e(title)}</h2>'
         else:
             body = f'<h2>{e(title)}</h2>{_big(big)}'
         if text:
@@ -113,7 +125,7 @@ def slide_bodies(post):
             body += _rows(s["rows"], check=bool(s.get("checklist")))
         bodies.append(body)
     if post.get("recap"):
-        bodies.append(f'<h2>{e(post.get("recap_title", "On one slide"))}</h2>{_rows(post["recap"])}')
+        bodies.append(f'<h2>{e(_clip(post.get("recap_title", "On one slide"), 5))}</h2>{_rows(post["recap"])}')
     bodies.append(f'<h2>{e(post.get("cta_title", "Want the numbers?"))}</h2><div class="p">{e(post.get("cta_text", ""))}</div>'
                   f'<div class="cta">Comment <span>{e(post.get("cta_keyword", "VALUE"))}</span></div>')
     return bodies

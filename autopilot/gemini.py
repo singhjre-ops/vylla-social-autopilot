@@ -82,18 +82,24 @@ What works for carousels right now: one idea broken into steps, one idea per sli
 own, a recap slide people screenshot and send, then one ask.
 
 Return JSON only, with these keys:
-  "headline": the cover's first line, max 5 words, concrete. Never a question, never a greeting,
-  "headline2": the cover's second line (shown in gray), max 5 words, finishes the thought,
+  "headline": the cover's first line, max 4 words, sentence case, ends with a period. Never a question or greeting,
+  "headline2": the cover's second line (shown in gray), max 4 words, sentence case, finishes the thought,
   "big": optional short figure for the cover (max 7 characters) taken from the facts given, or "",
   "subhead": max 14 words under the cover, ending with "Swipe.",
   "slides": 5 to 7 objects, each {{"title": max 5 words, "big": "" or a step number like "01" or a figure from
       the facts given (max 7 characters), "text": 8-25 words of concrete information}},
   "recap_title": max 4 words, e.g. "Newtown on one slide",
-  "recap": 4 to 6 pairs [label max 3 words, value max 7 words] that summarise the slides,
+  "recap": 4 to 6 pairs [label max 2 short words, or the step number like "01"; value max 6 words],
   "cta_title": max 5 words,
-  "cta_text": max 20 words saying what they get if they comment the keyword,
-  "caption": 80-150 words. Line one is a hook of max 120 characters with a specific fact. Short paragraphs.
-     Exactly one ask: comment the keyword you were given. Include the town name as a phrase people search,
+  "cta_text": max 18 words, first person, saying what Jaskaran will send personally. Offer only: homes for sale
+     right now, recent sales numbers for their street, or a price check on their home. Never promise a guide,
+     PDF, checklist, ebook or "resources",
+  "caption": 80-150 words in first person ("I", never "we" or "our"), like a local agent texting a friend.
+     Line one is a hook of max 120 characters that names something specific. Short paragraphs, mixed sentence
+     lengths, contractions. Exactly one ask at the end: comment the keyword you were given, and say what you'll
+     send (same offer as cta_text). Include "<Town> CT" once as a phrase people search.
+     Never use: navigate, navigating, journey, nestled, vibrant, boasts, delve, seamless, elevate, unlock,
+     discover, explore, hidden gem, look no further, dream home, informed decisions, in today's market,
   "short_caption": max 200 characters for TikTok,
   "hashtags": list of 3-5 specific local hashtags without the # sign,
   "alt": one sentence describing the cover for screen readers.

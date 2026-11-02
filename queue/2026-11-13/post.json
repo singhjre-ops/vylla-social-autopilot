@@ -1,0 +1,96 @@
+{
+  "headline": "The Sandy Hook Starter Pack",
+  "headline2": "Essential Places And Local Landmarks",
+  "big": "",
+  "subhead": "Key geographic landmarks, parks, and commuting corridors across Sandy Hook, Connecticut. Swipe.",
+  "slides": [
+    {
+      "title": "Sandy Hook Center",
+      "big": "01",
+      "text": "A walkable historic village hub along the Pootatuck River with sidewalks, local dining, and central community gathering spots."
+    },
+    {
+      "title": "Lake Zoar Waterfront",
+      "big": "02",
+      "text": "Public boat launch facilities and beach access at Eichler's Cove offer direct access to freshwater boating and kayaking."
+    },
+    {
+      "title": "Paugussett State Forest",
+      "big": "03",
+      "text": "Extensive trail networks follow the river bluffs, providing scenic forested paths and shoreline hiking alongside Lake Lillinonah."
+    },
+    {
+      "title": "Treadwell Memorial Park",
+      "big": "04",
+      "text": "Town park amenities include regulation athletic fields, public tennis courts, a community pool complex, and open pavilion space."
+    },
+    {
+      "title": "Highway Commuter Access",
+      "big": "05",
+      "text": "Direct highway entrance points connect travelers west toward Danbury and east toward Waterbury, Hartford, and shoreline routes."
+    },
+    {
+      "title": "Village Tree Lighting",
+      "big": "06",
+      "text": "A long-standing late autumn tradition where the community marks the start of the holiday season in the center."
+    }
+  ],
+  "recap_title": "Sandy Hook Quick Guide",
+  "recap": [
+    [
+      "Village Center",
+      "Walkable riverfront hub on Pootatuck"
+    ],
+    [
+      "Lake Zoar",
+      "Marina and Eichlers Cove beach"
+    ],
+    [
+      "State Forest",
+      "Shoreline trails along Lake Lillinonah"
+    ],
+    [
+      "Treadwell Park",
+      "Town athletic fields and pool"
+    ],
+    [
+      "Highway Access",
+      "Direct entry to regional interstate"
+    ]
+  ],
+  "cta_title": "Explore Sandy Hook Today",
+  "cta_text": "Comment MOVE to receive a detailed breakdown of neighborhoods, amenities, and available properties in town.",
+  "caption": "Sandy Hook sits along the Pootatuck River and Lake Zoar in eastern Fairfield County.\n\nExploring Sandy Hook CT means understanding its distinct layout. The village center provides walkable local dining along the river, while Eichler's Cove offers resident access to Lake Zoar for boating and seasonal recreation.\n\nTrail systems span across Paugussett State Forest along Lake Lillinonah, giving hikers miles of river bluffs. For regional travel, convenient highway access connects drivers quickly across the corridor.\n\nComment MOVE to receive our complete guide to living in Sandy Hook.",
+  "short_caption": "Get to know Sandy Hook, CT: Lake Zoar access, Paugussett State Forest trails, and village amenities. Comment MOVE for our complete local guide.",
+  "hashtags": [
+    "sandyhookct",
+    "newtownct",
+    "fairfieldcountyct",
+    "connecticutrealestate"
+  ],
+  "alt": "Graphic titled The Sandy Hook Starter Pack, highlighting essential places and local landmarks in Sandy Hook, Connecticut.",
+  "cta_keyword": "MOVE",
+  "captions": {
+    "long": "Sandy Hook sits along the Pootatuck River and Lake Zoar in eastern Fairfield County.\n\nExploring Sandy Hook CT means understanding its distinct layout. The village center provides walkable local dining along the river, while Eichler's Cove offers resident access to Lake Zoar for boating and seasonal recreation.\n\nTrail systems span across Paugussett State Forest along Lake Lillinonah, giving hikers miles of river bluffs. For regional travel, convenient highway access connects drivers quickly across the corridor.\n\nComment MOVE to receive our complete guide to living in Sandy Hook.\n\n#sandyhookct #newtownct #fairfieldcountyct #connecticutrealestate\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "Get to know Sandy Hook, CT: Lake Zoar access, Paugussett State Forest trails, and village amenities. Comment MOVE for our complete local guide.\nVylla Home | (475) 400-0661",
+    "gmb": "Sandy Hook sits along the Pootatuck River and Lake Zoar in eastern Fairfield County.\n\nExploring Sandy Hook CT means understanding its distinct layout. The village center provides walkable local dining along the river, while Eichler's Cove offers resident access to Lake Zoar for boating and seasonal recreation.\n\nTrail systems span across Paugussett State Forest along Lake Lillinonah, giving hikers miles of river bluffs. For regional travel, convenient highway access connects drivers quickly across the corridor.\n\nComment MOVE to receive our complete guide to living in Sandy Hook.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-13",
+  "theme": "town_spotlight",
+  "town": "Sandy Hook",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}
