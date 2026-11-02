@@ -1,65 +1,74 @@
 {
-  "headline": "Southbury Home Inspection",
-  "headline2": "Step by Step",
-  "big": "04",
-  "subhead": "A practical guide to evaluating property condition this November. Swipe.",
+  "headline": "Southbury inspection steps.",
+  "headline2": "What to check first.",
+  "big": "",
+  "subhead": "A four-step checklist for buying a home with private systems in Southbury. Swipe.",
   "slides": [
     {
-      "title": "Hire Independent Inspectors",
+      "title": "Book standard mechanicals first.",
       "big": "01",
-      "text": "Select a licensed home inspector independently to evaluate the structure, roof, and mechanical systems of the property."
+      "text": "Have a licensed inspector check the roof, foundation, heating system, electrical panel, and plumbing fixtures for age and wear."
     },
     {
-      "title": "Review Heating Systems",
+      "title": "Test the private well.",
       "big": "02",
-      "text": "Test heating units and check fuel sources, which is particularly important as temperatures drop in November."
+      "text": "Many Southbury homes use private wells. Run a potability water test in a lab and verify the pump flow rate."
     },
     {
-      "title": "Inspect Roof and Drainage",
+      "title": "Open and pump septic.",
       "big": "03",
-      "text": "Examine the roof condition, gutters, and yard grading to ensure proper water flow away from the foundation."
+      "text": "Hire a dedicated septic technician to locate the tank, inspect baffles, check leach fields, and pump the system completely."
     },
     {
-      "title": "Read Written Reports",
+      "title": "Run radon air tests.",
       "big": "04",
-      "text": "Review the detailed inspection report carefully with your agent to understand immediate repairs and routine maintenance needs."
+      "text": "Place continuous monitors in the lowest finished space for forty-eight hours to measure baseline radon gas levels accurately."
+    },
+    {
+      "title": "Negotiate repairs or credits.",
+      "big": "05",
+      "text": "Use the written inspection reports before your contract deadline to ask the seller for direct credits or necessary fixes."
     }
   ],
-  "recap_title": "Inspection Steps",
+  "recap_title": "Inspection checklist on one slide",
   "recap": [
     [
-      "Hire",
-      "Independent licensed inspector"
+      "01",
+      "Structure, roof, electrical, heating"
     ],
     [
-      "Check",
-      "Heating and fuel"
+      "02",
+      "Lab water test and well flow"
     ],
     [
-      "Examine",
-      "Roof and drainage"
+      "03",
+      "Full septic tank and leach field"
     ],
     [
-      "Review",
-      "Written findings"
+      "04",
+      "Radon air continuous monitoring"
+    ],
+    [
+      "05",
+      "Contract deadline credit requests"
     ]
   ],
-  "cta_title": "Get the Buyer Guide",
-  "cta_text": "Comment BUY below and I will send you the complete Southbury home buying guide directly.",
-  "caption": "Navigating a home inspection in Southbury, Connecticut requires a clear, methodical approach. When evaluating a property this November, focus on the structural and mechanical elements that matter most. Start by hiring an independent inspector to thoroughly examine the roof, foundation, and systems. Test the heating equipment to ensure proper operation as the weather cools. Check drainage around the foundation to confirm water flows away correctly. Finally, review the comprehensive written report to understand the current condition of the house before moving forward in your transaction. Having clear data helps you make informed decisions throughout the real estate process. Comment BUY to receive our detailed Southbury buyer resources.",
-  "short_caption": "Step-by-step guide to home inspections for buyers in Southbury, CT this November. Comment BUY for details.",
+  "cta_title": "Looking in Southbury?",
+  "cta_text": "Comment BUY and I will personally send you a list of homes for sale right now.",
+  "caption": "Inspecting a house in Southbury CT is different than checking out a condo downtown.\n\nMost properties here have private wells and on-site septic tanks. That means your standard home inspection is only step one. You need a dedicated septic tech to pull the tank lid, inspect the baffles, and evaluate the absorption field. You also want a certified lab test for your drinking water flow and quality.\n\nDon't skip the continuous radon monitor in the basement either. Getting these reports in hand before your contingency deadline gives you clean leverage to request seller credits.\n\nIf you're planning a purchase, comment BUY and I'll send you homes for sale right now in Southbury.",
+  "short_caption": "Buying in Southbury CT? Here is your step-by-step inspection guide for wells, septic, and mechanicals. Comment BUY for current listings.",
   "hashtags": [
     "SouthburyCT",
-    "ConnecticutRealEstate",
-    "HomeBuyingTips",
-    "GreaterDanbury"
+    "SouthburyRealEstate",
+    "CTRealtor",
+    "ConnecticutHomes"
   ],
-  "alt": "Text graphic reading Southbury Home Inspection Step by Step with Jaskaran Singh REALTOR.",
+  "alt": "Southbury inspection steps text on a neutral background.",
   "cta_keyword": "BUY",
   "captions": {
-    "long": "Navigating a home inspection in Southbury, Connecticut requires a clear, methodical approach. When evaluating a property this November, focus on the structural and mechanical elements that matter most. Start by hiring an independent inspector to thoroughly examine the roof, foundation, and systems. Test the heating equipment to ensure proper operation as the weather cools. Check drainage around the foundation to confirm water flows away correctly. Finally, review the comprehensive written report to understand the current condition of the house before moving forward in your transaction. Having clear data helps you make informed decisions throughout the real estate process. Comment BUY to receive our detailed Southbury buyer resources.\n\n#SouthburyCT #ConnecticutRealEstate #HomeBuyingTips #GreaterDanbury\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
-    "short": "Step-by-step guide to home inspections for buyers in Southbury, CT this November. Comment BUY for details.\nVylla Home | (475) 400-0661",
-    "gmb": "Navigating a home inspection in Southbury, Connecticut requires a clear, methodical approach. When evaluating a property this November, focus on the structural and mechanical elements that matter most. Start by hiring an independent inspector to thoroughly examine the roof, foundation, and systems. Test the heating equipment to ensure proper operation as the weather cools. Check drainage around the foundation to confirm water flows away correctly. Finally, review the comprehensive written report to understand the current condition of the house before moving forward in your transaction. Having clear data helps you make informed decisions throughout the real estate process. Comment BUY to receive our detailed Southbury buyer resources.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+    "long": "Inspecting a house in Southbury CT is different than checking out a condo downtown.\n\nMost properties here have private wells and on-site septic tanks. That means your standard home inspection is only step one. You need a dedicated septic tech to pull the tank lid, inspect the baffles, and evaluate the absorption field. You also want a certified lab test for your drinking water flow and quality.\n\nDon't skip the continuous radon monitor in the basement either. Getting these reports in hand before your contingency deadline gives you clean leverage to request seller credits.\n\nIf you're planning a purchase, comment BUY and I'll send you homes for sale right now in Southbury.\n\n#SouthburyCT #SouthburyRealEstate #CTRealtor #ConnecticutHomes\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "Buying in Southbury CT? Here is your step-by-step inspection guide for wells, septic, and mechanicals. Comment BUY for current listings.\nVylla Home | (475) 400-0661",
+    "gmb": "Inspecting a house in Southbury CT is different than checking out a condo downtown.\n\nMost properties here have private wells and on-site septic tanks. That means your standard home inspection is only step one. You need a dedicated septic tech to pull the tank lid, inspect the baffles, and evaluate the absorption field. You also want a certified lab test for your drinking water flow and quality.\n\nDon't skip the continuous radon monitor in the basement either. Getting these reports in hand before your contingency deadline gives you clean leverage to request seller credits.\n\nIf you're planning a purchase, comment BUY and I'll send you homes for sale right now in Southbury.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
   },
   "id": "2026-11-11",
   "theme": "buyer_tip",
@@ -75,6 +84,7 @@
     "slide-04.jpg",
     "slide-05.jpg",
     "slide-06.jpg",
-    "slide-07.jpg"
+    "slide-07.jpg",
+    "slide-08.jpg"
   ]
 }
