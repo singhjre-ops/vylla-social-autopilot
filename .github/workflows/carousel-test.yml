@@ -1,5 +1,7 @@
 name: Carousel test (temporary)
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,7 +24,9 @@ jobs:
           for d in (date(2026, 11, 9), date(2026, 11, 11), date(2026, 11, 13)):
               main.generate_carousel(cfg, d)
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: carousel-test
-          path: queue/2026-11-1*/
+      - name: Push results to a scratch branch
+        run: |
+          git config user.name autopilot; git config user.email autopilot@users.noreply.github.com
+          git checkout -b carousel-test
+          git add -f queue/2026-11-1*
+          git commit -qm "carousel test output" && git push -f origin carousel-test
