@@ -3,6 +3,7 @@
 This is a safety net, not legal review. It catches common problem phrases; you still approve posts.
 """
 
+import json
 import re
 
 # Phrases HUD and NAR guidance flag as steering or discriminatory in housing ads.
@@ -28,12 +29,14 @@ PHONE = re.compile(r"\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}")
 def check(post, cfg):
     """Return a list of problems. An empty list means the post passed."""
     problems = []
-    text = " ".join([post["headline"], post["subhead"], post["caption"], post["short_caption"],
+    text = " ".join([post["headline"], post.get("subhead", ""), post["caption"], post["short_caption"],
                      post.get("voiceover", ""), post.get("hook", ""), post.get("hook_say", ""),
                      post.get("cta_line", ""),
                      " ".join(" ".join(str(v) for v in sc.values()) for sc in post.get("scenes", [])
                               if isinstance(sc, dict)),
-                     " ".join(post["hashtags"])])
+                     " ".join(post["hashtags"]),
+                     post.get("headline2", ""), post.get("cta_title", ""), post.get("cta_text", ""),
+                     json.dumps(post.get("slides", [])), json.dumps(post.get("recap", []))])
     for pattern in BLOCKED:
         m = re.search(pattern, text, re.IGNORECASE)
         if m:

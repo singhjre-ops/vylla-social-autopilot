@@ -17,7 +17,7 @@ import os
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from . import audio, compliance, gemini, metricool, motion, telegram
+from . import audio, carousel, compliance, gemini, metricool, motion, telegram
 from .config import DATA, QUEUE, load_config, load_env
 from .publishers import list_zernio_accounts, publish
 from .render import make_video, render
@@ -91,14 +91,68 @@ def pick(cfg, today):
             latest = max(r["month"] for r in stats)
             month_rows = [r for r in stats if r["month"] == latest]
             row = month_rows[today.toordinal() % len(month_rows)]
-            facts.update(town=row["town"], source_id=f"stats-{latest}-{row['town']}",
+            facts.update(town=row["town"], source_id=f"stats-{latest}-{row['town']}", stats_source=row["source"],
                          stats=f"{latest}: median sale price ${int(float(row['median_sale_price'])):,}, "
                                f"{row['closed_sales']} closed sales, {row['median_days_on_market']} median days "
                                f"on market, {row['active_inventory']} active listings (source: {row['source']})")
         else:
-            theme = "town_spotlight"  # never let AI guess market numbers
+            theme = "seller_tip"  # never let AI guess market numbers
 
     return theme, facts
+
+
+SAMPLE_CAROUSEL = {
+    "headline": "Southbury starter pack.", "headline2": "Six local favorites.", "big": "",
+    "subhead": "What locals would tell you in your first month. Swipe.",
+    "slides": [
+        {"title": "Kettletown State Park", "big": "01", "text": "Trails and a swim area on the shore of Lake Zoar."},
+        {"title": "Lake Zoar", "big": "02", "text": "Boats and kayaks on the Housatonic, along Southbury's eastern edge."},
+        {"title": "Southbury Green", "big": "03", "text": "The town green on Main Street South, with the old churches around it."},
+        {"title": "Fall back roads", "big": "04", "text": "Foliage drives and farm stands through the Pomperaug River valley."},
+    ],
+    "recap_title": "Southbury on one slide",
+    "recap": [["01", "Kettletown State Park"], ["02", "Lake Zoar"], ["03", "Southbury Green"], ["04", "Fall back roads"]],
+    "cta_title": "Thinking about it?", "cta_text": "I'll send you what's for sale in Southbury right now.",
+    "caption": "Moving to Southbury? Here's the starter pack locals would give you. Comment MOVE and I'll send what's for sale.",
+    "short_caption": "Southbury starter pack: four local favorites.", "hashtags": ["SouthburyCT", "LakeZoar", "CTRealEstate"],
+    "alt": "Carousel cover: Southbury starter pack, four local favorites.",
+}
+
+
+def generate_carousel(cfg, today, sample=False, single=False):
+    """One carousel post (or a single image for Google Business). Slides land in queue/<day>/slide-NN.jpg."""
+    post_id = today.isoformat()
+    out = QUEUE / post_id
+    out.mkdir(parents=True, exist_ok=True)
+    theme, facts = pick(cfg, today)
+    t = THEMES[theme]
+    keyword = t.get("keyword", "VALUE")
+    brief = t["brief"].format(**{k: facts.get(k, "") for k in ("town", "month", "stats", "address", "listing")})
+    brief += "\n" + t.get("carousel", "").format(town=facts["town"]) + f"\nThe comment keyword is {keyword}."
+    for attempt in range(3):
+        post = json.loads(json.dumps(SAMPLE_CAROUSEL)) if sample else gemini.generate_carousel(cfg, brief)
+        problems = compliance.check(post, cfg)
+        if not problems:
+            break
+        print(f"attempt {attempt + 1} flagged: {problems}")
+        brief += "\nAvoid these phrases: " + "; ".join(problems)
+    if sample:
+        facts["town"] = "Southbury"
+    post["cta_keyword"] = keyword
+    post["captions"] = compliance.finalize(post, cfg)
+    post.update(id=post_id, theme=theme, town=facts["town"], source_id=facts.get("source_id"),
+                problems=problems, status="pending", format="carousel")
+    eyebrow = f"{facts['town']}, CT · {t['label'].title()}"
+    for old in out.glob("slide-*.jpg"):
+        old.unlink()
+    bodies = carousel.slide_bodies(post)
+    if single:  # Google Business takes one image: the cover
+        bodies = bodies[:1]
+    files = carousel.render_slides(bodies, eyebrow, theme, out, source=facts.get("stats_source"))
+    post["slide_files"] = [f.name for f in files]
+    (out / "post.json").write_text(json.dumps(post, indent=2))
+    print(f"carousel {post_id}: {theme} / {facts['town']} -> {len(files)} slide(s)")
+    return out
 
 
 def generate(cfg, today, sample=False, notify=True):
@@ -206,7 +260,7 @@ def build_week(cfg, today, sample=False):
     """Make next Monday-Sunday's posts and a Metricool CSV to import."""
     week_start = today + timedelta(days=(7 - today.weekday()) % 7 or 7)
     out, rows, skipped, ledger = metricool.build_week(
-        cfg, week_start, lambda day: generate(cfg, day, sample=sample, notify=False))
+        cfg, week_start, lambda day: _weekly_post(cfg, day, sample))
     metricool.prune_media(today)
     summary = (f"Metricool CSV for week of {week_start}: {len(rows)} posts. "
                f"Used this month: {json.dumps(ledger)} of {cfg['metricool']['monthly_post_limit']}.")
@@ -219,6 +273,13 @@ def build_week(cfg, today, sample=False):
         note = ("\nRecord your voice first (scripts below), then import this file. "
                 "If you skip a script, that video keeps the AI voice.") if video_days else ""
         telegram.send_document(out, summary + note + "\nImport it in Metricool: Calendar > Import CSV.")
+
+
+def _weekly_post(cfg, day, sample):
+    if cfg["metricool"].get("format", "video") == "carousel":
+        single = cfg["metricool"]["schedule"].get(day.weekday()) == ["gmb"]
+        return generate_carousel(cfg, day, sample=sample, single=single)
+    return generate(cfg, day, sample=sample, notify=False)
 
 
 def _week_video_dirs(cfg, week_start):

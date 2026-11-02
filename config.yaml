@@ -75,11 +75,13 @@ metricool:
   # Video days post a 10-second vertical video (Reel on Instagram, Short on YouTube).
   # Google Business Profile does not take video, so it gets the image on its own day.
   # About 17-20 posts a month with per_row counting; the exporter never goes over the limit.
+  # carousel = white slide posts (Instagram/Facebook carousel, TikTok photo post); video = the older Reels
+  format: carousel
   schedule:
-    0: [facebook, instagram, tiktok, youtube]
+    0: [facebook, instagram, tiktok]
     1: [gmb]
-    2: [facebook, instagram, tiktok, youtube]
-    4: [facebook, instagram, tiktok, youtube]
+    2: [facebook, instagram, tiktok]
+    4: [facebook, instagram, tiktok]
   # Public web address where post images and videos are hosted (GitHub Pages, see README).
   media_base_url: https://singhjre-ops.github.io/vylla-social-autopilot/media
 

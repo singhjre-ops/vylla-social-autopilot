@@ -64,6 +64,63 @@ def generate(cfg, brief):
     return post
 
 
+CAROUSEL_RULES = """You write Instagram carousel posts for {name}, {title} with {brokerage}, serving {regions}, Connecticut.
+He is a data-driven agent with an engineering background. Voice: plain English, specific, calm, useful. No hype.
+
+Hard rules (fair housing and accuracy):
+- Describe properties and places, never people. Never mention or imply race, color, religion, sex,
+  disability, familial status, national origin, age, sexual orientation, gender identity, marital status,
+  source of income, or veteran status.
+- Never say who a home or town is "perfect for" or "ideal for", or call an area safe, exclusive or family-friendly.
+- Never rank or rate schools. Never state crime levels. No guarantees about price or appreciation.
+- Never invent numbers, prices, percentages, dates or statistics. A number may appear ONLY if it is in the facts
+  you were given. Otherwise use step numbers (01, 02...) or no number at all.
+- Only name places you are certain exist today and have for years (state parks, landmarks, lakes, long-running
+  events, town greens). No restaurants or shops that may have closed.
+
+What works for carousels right now: one idea broken into steps, one idea per slide, every slide readable on its
+own, a recap slide people screenshot and send, then one ask.
+
+Return JSON only, with these keys:
+  "headline": the cover's first line, max 5 words, concrete. Never a question, never a greeting,
+  "headline2": the cover's second line (shown in gray), max 5 words, finishes the thought,
+  "big": optional short figure for the cover (max 7 characters) taken from the facts given, or "",
+  "subhead": max 14 words under the cover, ending with "Swipe.",
+  "slides": 5 to 7 objects, each {{"title": max 5 words, "big": "" or a step number like "01" or a figure from
+      the facts given (max 7 characters), "text": 8-25 words of concrete information}},
+  "recap_title": max 4 words, e.g. "Newtown on one slide",
+  "recap": 4 to 6 pairs [label max 3 words, value max 7 words] that summarise the slides,
+  "cta_title": max 5 words,
+  "cta_text": max 20 words saying what they get if they comment the keyword,
+  "caption": 80-150 words. Line one is a hook of max 120 characters with a specific fact. Short paragraphs.
+     Exactly one ask: comment the keyword you were given. Include the town name as a phrase people search,
+  "short_caption": max 200 characters for TikTok,
+  "hashtags": list of 3-5 specific local hashtags without the # sign,
+  "alt": one sentence describing the cover for screen readers.
+Do not include phone numbers, disclaimers or the brokerage line; they are added later."""
+
+
+def generate_carousel(cfg, brief):
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key:
+        raise RuntimeError("GEMINI_API_KEY is not set. Get a free key at https://aistudio.google.com/apikey")
+    agent = cfg["agent"]
+    system = CAROUSEL_RULES.format(name=agent["name"], title=agent["title"], brokerage=agent["brokerage"],
+                                   regions=", ".join(cfg["regions"]))
+    body = {
+        "system_instruction": {"parts": [{"text": system}]},
+        "contents": [{"role": "user", "parts": [{"text": brief}]}],
+        "generationConfig": {"responseMimeType": "application/json", "temperature": 0.8},
+    }
+    resp = _post_with_retries(cfg, key, body)
+    post = json.loads(resp.json()["candidates"][0]["content"]["parts"][0]["text"])
+    missing = {"headline", "slides", "caption", "short_caption", "hashtags"} - post.keys()
+    if missing or not isinstance(post.get("slides"), list) or len(post["slides"]) < 3:
+        raise ValueError(f"Gemini carousel response incomplete: missing {missing}")
+    post.setdefault("subhead", "")
+    return post
+
+
 RETRY_STATUS = {429, 500, 502, 503, 504}
 FALLBACK_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest", "gemini-2.5-flash-lite"]
 

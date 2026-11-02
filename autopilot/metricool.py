@@ -120,6 +120,10 @@ def build_week(cfg, week_start, generate):
 
         post_dir = generate(day)
         post = json.loads((post_dir / "post.json").read_text())
+        if post.get("slide_files"):
+            rows.append(_carousel_row(cfg, header, day, networks, post, post_dir, base))
+            ledger[day.isoformat()] = cost
+            continue
         video = "gmb" not in networks and (post_dir / "vertical.mp4").exists()
         src = post_dir / ("vertical.mp4" if video else "feed.jpg")
         media_name = f"{day.isoformat()}{src.suffix}"
@@ -175,6 +179,49 @@ def build_week(cfg, week_start, generate):
         writer.writerows(rows)
     LEDGER.write_text(json.dumps(ledger, indent=2, sort_keys=True))
     return out, rows, skipped, month_totals(ledger)
+
+
+def _carousel_row(cfg, header, day, networks, post, post_dir, base):
+    """One Metricool row with up to 10 images: a carousel on Instagram, Facebook and TikTok (photo mode)."""
+    mc = cfg["metricool"]
+    networks = [n for n in networks if n != "youtube"]  # YouTube only takes video
+    row = {col: "" for col in header}
+    urls = []
+    for i, name in enumerate(post["slide_files"][:10], 1):
+        media_name = f"{day.isoformat()}-{i:02d}.jpg"
+        shutil.copy(post_dir / name, MEDIA_DIR / media_name)
+        urls.append(f"{base}/{media_name}")
+    gbp_only = networks == ["gmb"]
+    values = {
+        "Text": post["captions"]["gmb" if gbp_only else "long"],
+        "Date": day.isoformat(),
+        "Time": datetime.strptime(cfg["post_time_local"], "%H:%M").strftime(mc.get("time_format", "%H:%M")),
+        "Draft": "TRUE" if (mc["import_as_draft"] or post.get("problems")) else "FALSE",
+        "Alt text picture 1": post.get("alt", "")[:300],
+    }
+    for i, u in enumerate(urls, 1):
+        values[f"Picture Url {i}"] = u
+    if "instagram" in networks:
+        values["Instagram Post Type"] = "POST"
+    if "facebook" in networks:
+        values["Facebook Post Type"] = "POST"
+    if "gmb" in networks:
+        values["GBP Post Type"] = "PUBLICATION"
+    if "tiktok" in networks:
+        values.update({"TikTok Title": post["headline"][:90], "TikTok Post Privacy": mc.get("tiktok_privacy", "PUBLIC_TO_EVERYONE"),
+                       "TikTok disable comments": "FALSE", "TikTok disable duet": "FALSE", "TikTok disable stitch": "FALSE",
+                       "TikTok Auto Add Music": "TRUE", "TikTok Photo Cover Index": "0",
+                       "TikTok Ai generated content": "FALSE"})
+    for col in header:
+        n = _norm(col)
+        for net in NETWORKS:
+            if n in ALIASES.get(net, (net,)):
+                row[col] = "TRUE" if net in networks else "FALSE"
+    for k, v in values.items():
+        if k not in row:
+            raise ValueError(f"Metricool template has no column {k}")
+        row[k] = v
+    return row
 
 
 def prune_media(today, keep_days=30):
