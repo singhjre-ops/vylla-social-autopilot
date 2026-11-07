@@ -1,0 +1,90 @@
+{
+  "headline": "Sandy Hook starter pack.",
+  "headline2": "Five local reference points.",
+  "big": "",
+  "subhead": "Key landmarks, water access, and commuter routes in this Newtown village. Swipe.",
+  "slides": [
+    {
+      "title": "Upper Paugussett State Forest",
+      "big": "01",
+      "text": "Offers miles of marked hiking and mountain bike trails along Lake Lillinonah, with unpaved fire roads open year-round."
+    },
+    {
+      "title": "Eichler's Cove marina",
+      "big": "02",
+      "text": "Town-owned water access on Lake Zoar featuring a public boat launch, marina slips, and a freshwater beach."
+    },
+    {
+      "title": "Sandy Hook Village center",
+      "big": "03",
+      "text": "A compact commercial district anchored along the Pootatuck River, with sidewalks connecting local businesses and municipal parking."
+    },
+    {
+      "title": "Interstate 84 corridor",
+      "big": "04",
+      "text": "Highway exits 10 and 11 provide direct highway links west toward Danbury and east toward Waterbury and Hartford."
+    },
+    {
+      "title": "Annual village tree lighting",
+      "big": "05",
+      "text": "A seasonal December gathering centered around the historic village lampposts and storefronts, hosted every year since 2000."
+    }
+  ],
+  "recap_title": "Sandy Hook at once",
+  "recap": [
+    [
+      "01",
+      "Paugussett State Forest trails"
+    ],
+    [
+      "02",
+      "Lake Zoar water access"
+    ],
+    [
+      "03",
+      "Walkable village center"
+    ],
+    [
+      "04",
+      "Direct Interstate 84 access"
+    ],
+    [
+      "05",
+      "Annual winter tree lighting"
+    ]
+  ],
+  "cta_title": "Thinking about Sandy Hook?",
+  "cta_text": "Comment MOVE and I will send you a list of current homes for sale in Sandy Hook.",
+  "caption": "Exit 10 off I-84 drops you right into Sandy Hook's core, where the Pootatuck River cuts past the storefronts.\n\nIf you are looking at Sandy Hook CT this November, here is the ground-level layout. You have Upper Paugussett State Forest to the north for trail systems and Lake Lillinonah views. South of that sits Lake Zoar and Eichler's Cove, which gives Newtown residents direct boat slips and shoreline access.\n\nCommuters use exits 10 and 11 to reach Danbury or Hartford without cutting across town. The village center stays active through winter, leading into the annual December tree lighting by the river.\n\nComment MOVE and I'll send you the full list of homes for sale right now in Sandy Hook.",
+  "short_caption": "A quick starter pack for Sandy Hook CT: trail networks, Lake Zoar, I-84 access, and the village center. Comment MOVE for current homes for sale.",
+  "hashtags": [
+    "sandyhookct",
+    "newtownct",
+    "greaterdanbury",
+    "fairfieldcountyct"
+  ],
+  "alt": "Graphic cover slide with text reading 'Sandy Hook starter pack. Five local reference points.'",
+  "cta_keyword": "MOVE",
+  "captions": {
+    "long": "Exit 10 off I-84 drops you right into Sandy Hook's core, where the Pootatuck River cuts past the storefronts.\n\nIf you are looking at Sandy Hook CT this November, here is the ground-level layout. You have Upper Paugussett State Forest to the north for trail systems and Lake Lillinonah views. South of that sits Lake Zoar and Eichler's Cove, which gives Newtown residents direct boat slips and shoreline access.\n\nCommuters use exits 10 and 11 to reach Danbury or Hartford without cutting across town. The village center stays active through winter, leading into the annual December tree lighting by the river.\n\nComment MOVE and I'll send you the full list of homes for sale right now in Sandy Hook.\n\n#sandyhookct #newtownct #greaterdanbury #fairfieldcountyct\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "A quick starter pack for Sandy Hook CT: trail networks, Lake Zoar, I-84 access, and the village center. Comment MOVE for current homes for sale.\nVylla Home | (475) 400-0661",
+    "gmb": "Exit 10 off I-84 drops you right into Sandy Hook's core, where the Pootatuck River cuts past the storefronts.\n\nIf you are looking at Sandy Hook CT this November, here is the ground-level layout. You have Upper Paugussett State Forest to the north for trail systems and Lake Lillinonah views. South of that sits Lake Zoar and Eichler's Cove, which gives Newtown residents direct boat slips and shoreline access.\n\nCommuters use exits 10 and 11 to reach Danbury or Hartford without cutting across town. The village center stays active through winter, leading into the annual December tree lighting by the river.\n\nComment MOVE and I'll send you the full list of homes for sale right now in Sandy Hook.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-13",
+  "theme": "town_spotlight",
+  "town": "Sandy Hook",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

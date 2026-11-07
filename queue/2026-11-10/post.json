@@ -1,0 +1,92 @@
+{
+  "headline": "Bethel starter pack.",
+  "headline2": "Six landmarks to know.",
+  "big": "",
+  "subhead": "A quick run through the local anchors across town. Swipe.",
+  "slides": [
+    {
+      "title": "Greenwood Avenue downtown",
+      "big": "01",
+      "text": "The walkable center with local storefronts, the public library, and municipal offices along one main corridor."
+    },
+    {
+      "title": "Huntington State Park",
+      "big": "02",
+      "text": "Spans over one thousand acres across Bethel, Redding, and Newtown with multi-use trails and ponds."
+    },
+    {
+      "title": "Putnam Memorial State Park",
+      "big": "03",
+      "text": "Connecticut's oldest state park marks the winter encampment of Continental troops from 1778 to 1779."
+    },
+    {
+      "title": "Bethel train station",
+      "big": "04",
+      "text": "Located right downtown on the Metro-North Danbury Branch, offering rail connections toward South Norwalk and Manhattan."
+    },
+    {
+      "title": "P.T. Barnum monument",
+      "big": "05",
+      "text": "A bronze sculpture outside the town library honoring the Bethel native and historic showman."
+    },
+    {
+      "title": "Winter tree lighting",
+      "big": "06",
+      "text": "A long-running late November gathering along Greenwood Avenue with hot cider and soup around P.T. Barnum Square."
+    }
+  ],
+  "recap_title": "Bethel on one slide",
+  "recap": [
+    [
+      "01",
+      "Greenwood Ave center"
+    ],
+    [
+      "02",
+      "Huntington State Park"
+    ],
+    [
+      "03",
+      "Putnam Memorial Park"
+    ],
+    [
+      "04",
+      "Metro-North rail line"
+    ],
+    [
+      "05",
+      "P.T. Barnum statue"
+    ],
+    [
+      "06",
+      "November tree lighting"
+    ]
+  ],
+  "cta_title": "Looking around Bethel?",
+  "cta_text": "Comment MOVE and I will send you the current list of homes for sale right now.",
+  "caption": "Bethel CT has a distinct layout that centers heavily around Greenwood Avenue. \n\nYou have an active downtown rail stop, two massive state parks right at the town borders, and Route 6 connecting you straight into Danbury or Newtown. November also brings the annual tree lighting on P.T. Barnum Square, which kicks off the colder months downtown.\n\nIf you want to see what is currently on the market here, drop a comment with MOVE and I'll send you a list of homes for sale right now.",
+  "short_caption": "The Bethel starter pack: six local landmarks and anchors to know across town. Thinking about Bethel CT? Comment MOVE for current listings.",
+  "hashtags": [
+    "bethelct",
+    "bethelctrealestate",
+    "fairfieldcountyct",
+    "greaterdanbury"
+  ],
+  "alt": "Text overlay reading Bethel starter pack, six landmarks to know.",
+  "cta_keyword": "MOVE",
+  "captions": {
+    "long": "Bethel CT has a distinct layout that centers heavily around Greenwood Avenue. \n\nYou have an active downtown rail stop, two massive state parks right at the town borders, and Route 6 connecting you straight into Danbury or Newtown. November also brings the annual tree lighting on P.T. Barnum Square, which kicks off the colder months downtown.\n\nIf you want to see what is currently on the market here, drop a comment with MOVE and I'll send you a list of homes for sale right now.\n\n#bethelct #bethelctrealestate #fairfieldcountyct #greaterdanbury\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "The Bethel starter pack: six local landmarks and anchors to know across town. Thinking about Bethel CT? Comment MOVE for current listings.\nVylla Home | (475) 400-0661",
+    "gmb": "Bethel CT has a distinct layout that centers heavily around Greenwood Avenue. \n\nYou have an active downtown rail stop, two massive state parks right at the town borders, and Route 6 connecting you straight into Danbury or Newtown. November also brings the annual tree lighting on P.T. Barnum Square, which kicks off the colder months downtown.\n\nIf you want to see what is currently on the market here, drop a comment with MOVE and I'll send you a list of homes for sale right now.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-10",
+  "theme": "town_spotlight",
+  "town": "Bethel",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg"
+  ]
+}

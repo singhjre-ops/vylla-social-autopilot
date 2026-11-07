@@ -1,0 +1,79 @@
+{
+  "headline": "Read your mill rate.",
+  "headline2": "Southbury property taxes.",
+  "big": "",
+  "subhead": "How to check your property taxes before making an offer in Southbury. Swipe.",
+  "slides": [
+    {
+      "title": "Find the mill rate",
+      "big": "01",
+      "text": "Check the current Southbury town mill rate online. One mill equals one dollar of tax per one thousand dollars of assessed value."
+    },
+    {
+      "title": "Check assessment ratios",
+      "big": "02",
+      "text": "Connecticut assesses properties at seventy percent of fair market value. Multiply the market value by seventy percent to find the assessed value."
+    },
+    {
+      "title": "Calculate annual taxes",
+      "big": "03",
+      "text": "Multiply the assessed value by the mill rate, then divide by one thousand. This gives you the estimated yearly tax amount."
+    },
+    {
+      "title": "Review past bills",
+      "big": "04",
+      "text": "Ask to see past property tax bills for the specific address. Rates and assessments can change during town revaluation cycles."
+    }
+  ],
+  "recap_title": "Tax check steps",
+  "recap": [
+    [
+      "01",
+      "Find current town mill rate"
+    ],
+    [
+      "02",
+      "Calculate assessed value at seventy percent"
+    ],
+    [
+      "03",
+      "Multiply assessment by mill rate"
+    ],
+    [
+      "04",
+      "Review past tax bills"
+    ]
+  ],
+  "cta_title": "Get active listings",
+  "cta_text": "Comment BUY and I will send you homes for sale right now in Southbury CT.",
+  "caption": "Property taxes make up a big part of your monthly payment in Southbury CT. Looking at the numbers early helps you budget accurately.\n\nTake time to check the town mill rate and the assessed value before you submit an offer.\n\nComment BUY and I will send you homes for sale right now.",
+  "short_caption": "Check Southbury CT property taxes before you buy. Here is how mill rates work.",
+  "hashtags": [
+    "SouthburyCT",
+    "ConnecticutRealEstate",
+    "HomeBuying"
+  ],
+  "alt": "Cover slide for a real estate carousel about checking Southbury property taxes and mill rates.",
+  "cta_keyword": "BUY",
+  "captions": {
+    "long": "Property taxes make up a big part of your monthly payment in Southbury CT. Looking at the numbers early helps you budget accurately.\n\nTake time to check the town mill rate and the assessed value before you submit an offer.\n\nComment BUY and I will send you homes for sale right now.\n\n#SouthburyCT #ConnecticutRealEstate #HomeBuying\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "Check Southbury CT property taxes before you buy. Here is how mill rates work.\nVylla Home | (475) 400-0661",
+    "gmb": "Property taxes make up a big part of your monthly payment in Southbury CT. Looking at the numbers early helps you budget accurately.\n\nTake time to check the town mill rate and the assessed value before you submit an offer.\n\nComment BUY and I will send you homes for sale right now.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-11",
+  "theme": "buyer_tip",
+  "town": "Southbury",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg"
+  ]
+}
