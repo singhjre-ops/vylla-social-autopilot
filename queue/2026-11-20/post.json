@@ -1,0 +1,100 @@
+{
+  "headline": "Southbury starter pack.",
+  "headline2": "Local places to know.",
+  "big": "",
+  "subhead": "Six local spots to know around town. Swipe.",
+  "slides": [
+    {
+      "title": "Historic Main Street",
+      "big": "01",
+      "text": "The long historic district runs along Route 6, featuring preserved colonial structures and long-standing town landmarks."
+    },
+    {
+      "title": "Kettletown State Park",
+      "big": "02",
+      "text": "Located along Lake Zoar, this park offers miles of wooded hiking trails and waterfront access."
+    },
+    {
+      "title": "Pomperaug River",
+      "big": "03",
+      "text": "This waterway winds through town, crossing beneath old bridges and alongside quiet conservation areas."
+    },
+    {
+      "title": "Pratt Nature Center",
+      "big": "04",
+      "text": "A community green space featuring preserved acreage, walking paths, and educational outdoor programs."
+    },
+    {
+      "title": "Highway Access",
+      "big": "05",
+      "text": "Interstate 84 runs directly through town, providing straightforward road connections toward Danbury and Waterbury."
+    },
+    {
+      "title": "Annual Tree Lighting",
+      "big": "06",
+      "text": "The town green hosts the traditional holiday tree lighting every winter as the colder weather sets in."
+    }
+  ],
+  "recap_title": "Southbury on one slide",
+  "recap": [
+    [
+      "01",
+      "Historic Main Street corridor"
+    ],
+    [
+      "02",
+      "Kettletown State Park trails"
+    ],
+    [
+      "03",
+      "Pomperaug River waterways"
+    ],
+    [
+      "04",
+      "Pratt Nature Center grounds"
+    ],
+    [
+      "05",
+      "Interstate 84 access points"
+    ],
+    [
+      "06",
+      "Town green winter events"
+    ]
+  ],
+  "cta_title": "Curious about Southbury?",
+  "cta_text": "Comment MOVE below and I will send you homes for sale right now in Southbury CT.",
+  "caption": "Getting to know Southbury CT takes time, especially once the November weather settles in. From the trails at Kettletown State Park to the historic buildings along Main Street, there are distinct landmarks that define the area. Interstate 84 makes the daily commute straightforward, while spots like the Pratt Nature Center offer quiet places to walk outside. With winter approaching, the town green is getting ready for traditional seasonal events.\n\nI am Jaskaran Singh, a data-driven local real estate agent with an engineering background. If you want to see what is currently available here, just let me know.\n\nComment MOVE and I will send you homes for sale right now in Southbury CT.",
+  "short_caption": "A quick look at Southbury CT landmarks, parks, and local spots. Comment MOVE and I will send you homes for sale right now.",
+  "hashtags": [
+    "SouthburyCT",
+    "GreaterDanbury",
+    "ConnecticutRealEstate",
+    "Southbury"
+  ],
+  "alt": "Cover slide reading Southbury starter pack with Local places to know.",
+  "cta_keyword": "MOVE",
+  "captions": {
+    "long": "Getting to know Southbury CT takes time, especially once the November weather settles in. From the trails at Kettletown State Park to the historic buildings along Main Street, there are distinct landmarks that define the area. Interstate 84 makes the daily commute straightforward, while spots like the Pratt Nature Center offer quiet places to walk outside. With winter approaching, the town green is getting ready for traditional seasonal events.\n\nI am Jaskaran Singh, a data-driven local real estate agent with an engineering background. If you want to see what is currently available here, just let me know.\n\nComment MOVE and I will send you homes for sale right now in Southbury CT.\n\n#SouthburyCT #GreaterDanbury #ConnecticutRealEstate #Southbury\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "A quick look at Southbury CT landmarks, parks, and local spots. Comment MOVE and I will send you homes for sale right now.\nVylla Home | (475) 400-0661",
+    "gmb": "Getting to know Southbury CT takes time, especially once the November weather settles in. From the trails at Kettletown State Park to the historic buildings along Main Street, there are distinct landmarks that define the area. Interstate 84 makes the daily commute straightforward, while spots like the Pratt Nature Center offer quiet places to walk outside. With winter approaching, the town green is getting ready for traditional seasonal events.\n\nI am Jaskaran Singh, a data-driven local real estate agent with an engineering background. If you want to see what is currently available here, just let me know.\n\nComment MOVE and I will send you homes for sale right now in Southbury CT.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-20",
+  "theme": "town_spotlight",
+  "town": "Southbury",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}

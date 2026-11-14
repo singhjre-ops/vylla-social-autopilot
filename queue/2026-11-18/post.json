@@ -1,0 +1,80 @@
+{
+  "headline": "Review your property taxes.",
+  "headline2": "Ridgefield mill rates explained.",
+  "big": "",
+  "subhead": "Understand how CT property taxes affect your monthly housing payment. Swipe.",
+  "slides": [
+    {
+      "title": "Check the mill rate",
+      "big": "01",
+      "text": "Every town in Connecticut sets its own mill rate annually. One mill equals one dollar of tax per one thousand dollars of assessed value."
+    },
+    {
+      "title": "Find assessed value",
+      "big": "02",
+      "text": "In Connecticut, assessed value is typically seventy percent of the appraised market value, not the purchase price."
+    },
+    {
+      "title": "Calculate annual tax",
+      "big": "03",
+      "text": "Multiply the assessed value by the local mill rate, then divide by one thousand to find your exact yearly property tax amount."
+    },
+    {
+      "title": "Include in escrow",
+      "big": "04",
+      "text": "Your mortgage lender collects one twelfth of your annual property tax bill each month to hold in an escrow account for payment."
+    }
+  ],
+  "recap_title": "Property tax checklist",
+  "recap": [
+    [
+      "01",
+      "Check local mill rate"
+    ],
+    [
+      "02",
+      "Find seventy percent assessment"
+    ],
+    [
+      "03",
+      "Calculate yearly tax total"
+    ],
+    [
+      "04",
+      "Plan monthly escrow payments"
+    ]
+  ],
+  "cta_title": "Want recent sales numbers?",
+  "cta_text": "Comment BUY and I will send you recent sales numbers for your street directly.",
+  "caption": "Property taxes catch many buyers off guard in Ridgefield CT. When you look at homes this November, remember that Connecticut calculates assessments at seventy percent of market value, not purchase price. Each town sets a specific mill rate that determines your annual bill. Understanding this math prevents surprises in your monthly mortgage payment. I use my engineering background to break down these exact numbers for my clients so every cost is clear before making an offer.\n\nComment BUY and I will send recent sales numbers for your street.",
+  "short_caption": "How to calculate property taxes and mill rates in Ridgefield CT before making an offer on a home.",
+  "hashtags": [
+    "RidgefieldCT",
+    "ConnecticutRealEstate",
+    "GreaterDanbury",
+    "HomeBuyingTips"
+  ],
+  "alt": "Text on screen explaining property taxes and mill rates for home buyers in Ridgefield, Connecticut.",
+  "cta_keyword": "BUY",
+  "captions": {
+    "long": "Property taxes catch many buyers off guard in Ridgefield CT. When you look at homes this November, remember that Connecticut calculates assessments at seventy percent of market value, not purchase price. Each town sets a specific mill rate that determines your annual bill. Understanding this math prevents surprises in your monthly mortgage payment. I use my engineering background to break down these exact numbers for my clients so every cost is clear before making an offer.\n\nComment BUY and I will send recent sales numbers for your street.\n\n#RidgefieldCT #ConnecticutRealEstate #GreaterDanbury #HomeBuyingTips\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "How to calculate property taxes and mill rates in Ridgefield CT before making an offer on a home.\nVylla Home | (475) 400-0661",
+    "gmb": "Property taxes catch many buyers off guard in Ridgefield CT. When you look at homes this November, remember that Connecticut calculates assessments at seventy percent of market value, not purchase price. Each town sets a specific mill rate that determines your annual bill. Understanding this math prevents surprises in your monthly mortgage payment. I use my engineering background to break down these exact numbers for my clients so every cost is clear before making an offer.\n\nComment BUY and I will send recent sales numbers for your street.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-18",
+  "theme": "buyer_tip",
+  "town": "Ridgefield",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg"
+  ]
+}
