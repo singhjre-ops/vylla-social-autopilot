@@ -1,0 +1,89 @@
+{
+  "headline": "The Wilton starter.",
+  "headline2": "Five places locals use.",
+  "big": "",
+  "subhead": "A national park, a pond beach, a 200-year-old farm and a train to the city. Swipe.",
+  "slides": [
+    {
+      "title": "Weir Farm",
+      "big": "01",
+      "text": "Connecticut's only national park dedicated to American painting, about 60 acres. Ranger-led tours are free."
+    },
+    {
+      "title": "Merwin Meadows",
+      "big": "02",
+      "text": "A 17-acre park right in Wilton Center, with a pond beach for swimming in summer."
+    },
+    {
+      "title": "Woodcock Nature Center",
+      "big": "03",
+      "text": "About 150 acres on the Wilton-Ridgefield line, with boardwalk trails over red maple wetlands."
+    },
+    {
+      "title": "Ambler Farm",
+      "big": "04",
+      "text": "A town-owned farm about 200 years old. Open dawn to dusk all year, known for maple syruping and its farm stand."
+    },
+    {
+      "title": "Metro-North",
+      "big": "05",
+      "text": "Stations in Wilton Center and Cannondale. Grand Central is about 1 hour 35 minutes by train."
+    }
+  ],
+  "recap_title": "Wilton on one slide",
+  "recap": [
+    [
+      "01",
+      "Weir Farm"
+    ],
+    [
+      "02",
+      "Merwin Meadows"
+    ],
+    [
+      "03",
+      "Woodcock Nature Center"
+    ],
+    [
+      "04",
+      "Ambler Farm"
+    ],
+    [
+      "05",
+      "Metro-North"
+    ]
+  ],
+  "cta_title": "Curious about Wilton?",
+  "cta_text": "Comment MOVE and I'll send homes for sale in Wilton right now.",
+  "caption": "Wilton packs a national park, a pond beach, a 200-year-old farm and a train to Grand Central into one town.\n\n1. Weir Farm: Connecticut's only national park dedicated to American painting, with free ranger-led tours.\n2. Merwin Meadows: a 17-acre park in Wilton Center with a pond beach in summer.\n3. Woodcock Nature Center: about 150 acres on the Ridgefield line, with boardwalks over the wetlands.\n4. Ambler Farm: town-owned, about 200 years old, open dawn to dusk every day.\n5. Metro-North: stations in Wilton Center and Cannondale, about 1 hour 35 minutes to Grand Central.\n\nComment MOVE and I'll send homes for sale in Wilton right now.",
+  "short_caption": "The Wilton, CT starter: Weir Farm, Merwin Meadows, Woodcock Nature Center, Ambler Farm and Metro-North.",
+  "hashtags": [
+    "WiltonCT",
+    "FairfieldCounty",
+    "ConnecticutRealEstate",
+    "CTRealtor"
+  ],
+  "alt": "Carousel cover: The Wilton starter. Five places locals use.",
+  "cta_keyword": "MOVE",
+  "captions": {
+    "long": "Wilton packs a national park, a pond beach, a 200-year-old farm and a train to Grand Central into one town.\n\n1. Weir Farm: Connecticut's only national park dedicated to American painting, with free ranger-led tours.\n2. Merwin Meadows: a 17-acre park in Wilton Center with a pond beach in summer.\n3. Woodcock Nature Center: about 150 acres on the Ridgefield line, with boardwalks over the wetlands.\n4. Ambler Farm: town-owned, about 200 years old, open dawn to dusk every day.\n5. Metro-North: stations in Wilton Center and Cannondale, about 1 hour 35 minutes to Grand Central.\n\nComment MOVE and I'll send homes for sale in Wilton right now.\n\n#WiltonCT #FairfieldCounty #ConnecticutRealEstate #CTRealtor\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "The Wilton, CT starter: Weir Farm, Merwin Meadows, Woodcock Nature Center, Ambler Farm and Metro-North.\nVylla Home | (475) 400-0661",
+    "gmb": "Wilton packs a national park, a pond beach, a 200-year-old farm and a train to Grand Central into one town.\n\n1. Weir Farm: Connecticut's only national park dedicated to American painting, with free ranger-led tours.\n2. Merwin Meadows: a 17-acre park in Wilton Center with a pond beach in summer.\n3. Woodcock Nature Center: about 150 acres on the Ridgefield line, with boardwalks over the wetlands.\n4. Ambler Farm: town-owned, about 200 years old, open dawn to dusk every day.\n5. Metro-North: stations in Wilton Center and Cannondale, about 1 hour 35 minutes to Grand Central.\n\nComment MOVE and I'll send homes for sale in Wilton right now.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-11-27",
+  "theme": "town_spotlight",
+  "town": "Wilton",
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg"
+  ]
+}

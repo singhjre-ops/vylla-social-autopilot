@@ -49,9 +49,9 @@ music:
 
 # One theme per weekday (0 = Monday). Themes are defined in autopilot/themes.py.
 calendar:
-  0: market_update
+  0: market_update               # one town's Redfin numbers (data/market_stats.csv); a different town each week
   1: town_spotlight
-  2: listing_spotlight           # falls back to buyer_tip when you have no active listing
+  2: [market_compare, buyer_tip] # alternates weekly: a 9-town data comparison, then a buyer tip
   3: seller_tip
   4: town_spotlight
   5: buyer_tip

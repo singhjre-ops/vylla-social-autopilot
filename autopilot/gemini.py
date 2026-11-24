@@ -128,7 +128,11 @@ def generate_carousel(cfg, brief):
 
 
 RETRY_STATUS = {429, 500, 502, 503, 504}
-FALLBACK_MODELS = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-flash-lite-latest", "gemini-2.5-flash-lite"]
+# Backups, tried in order when the main model is overloaded or retired. Different models have separate
+# capacity, so a busy day on one rarely takes all of them down. Google retires old names (2.5 Flash went
+# away in Nov 2026), and a retired name is skipped automatically (HTTP 404).
+FALLBACK_MODELS = ["gemini-flash-latest", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash",
+                   "gemini-flash-lite-latest", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"]
 
 
 def _post_with_retries(cfg, key, body):
@@ -136,7 +140,7 @@ def _post_with_retries(cfg, key, body):
     models = [cfg["gemini"]["model"]] + [m for m in FALLBACK_MODELS if m != cfg["gemini"]["model"]]
     last = None
     for model in models:
-        for wait in (0, 10, 30, 60):
+        for wait in (0, 15, 45):
             if wait:
                 time.sleep(wait)
             try:

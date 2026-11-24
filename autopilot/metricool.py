@@ -103,7 +103,7 @@ def build_week(cfg, week_start, generate):
     mc = cfg["metricool"]
     header = _header()
     ledger = _ledger()
-    rows, skipped = [], []
+    rows, skipped, failed = [], [], []
     MEDIA_DIR.mkdir(parents=True, exist_ok=True)
     base = mc["media_base_url"].rstrip("/")
 
@@ -118,7 +118,12 @@ def build_week(cfg, week_start, generate):
             skipped.append(day.isoformat())
             continue
 
-        post_dir = generate(day)
+        try:
+            post_dir = generate(day)
+        except Exception as e:  # one bad day (e.g. Gemini down) must not sink the whole week
+            print(f"{day}: post failed, skipping it: {e}")
+            failed.append(day.isoformat())
+            continue
         post = json.loads((post_dir / "post.json").read_text())
         if post.get("slide_files"):
             rows.append(_carousel_row(cfg, header, day, networks, post, post_dir, base))
@@ -171,6 +176,8 @@ def build_week(cfg, week_start, generate):
         rows.append(row)
         ledger[day.isoformat()] = cost
 
+    if not rows:
+        raise RuntimeError(f"No posts could be built for the week of {week_start}. Failed days: {failed}")
     EXPORTS.mkdir(exist_ok=True)
     out = EXPORTS / f"metricool-week-{week_start.isoformat()}.csv"
     with open(out, "w", newline="", encoding="utf-8") as f:
@@ -178,7 +185,7 @@ def build_week(cfg, week_start, generate):
         writer.writeheader()
         writer.writerows(rows)
     LEDGER.write_text(json.dumps(ledger, indent=2, sort_keys=True))
-    return out, rows, skipped, month_totals(ledger)
+    return out, rows, skipped + [f"{d} (failed)" for d in failed], month_totals(ledger)
 
 
 def _carousel_row(cfg, header, day, networks, post, post_dir, base):

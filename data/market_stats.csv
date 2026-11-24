@@ -1,1 +1,10 @@
-month,town,median_sale_price,closed_sales,median_days_on_market,active_inventory,source
+month,town,zip,median_sale_price,price_change_yoy_pct,median_days_on_market,days_on_market_last_year,homes_sold,homes_sold_last_year,sale_to_list_pct,source
+2026-10,Newtown,06470,679652,0.7,56,43,50,55,99.0,"Redfin, ZIP 06470, 3 months ending Oct 2026"
+2026-10,Sandy Hook,06482,569708,-13.9,64,57,32,49,100.1,"Redfin, ZIP 06482, 3 months ending Oct 2026"
+2026-10,Danbury,06810,524731,8.2,53,49,105,117,102.0,"Redfin, ZIP 06810, 3 months ending Oct 2026"
+2026-10,Bethel,06801,599693,12.6,52,56,58,66,100.4,"Redfin, ZIP 06801, 3 months ending Oct 2026"
+2026-10,Brookfield,06804,629677,7.6,56,51,74,67,100.8,"Redfin, ZIP 06804, 3 months ending Oct 2026"
+2026-10,New Milford,06776,499744,1.2,67,50,98,88,99.5,"Redfin, ZIP 06776, 3 months ending Oct 2026"
+2026-10,Ridgefield,06877,1160405,21.4,38,37,86,86,103.3,"Redfin, ZIP 06877, 3 months ending Oct 2026"
+2026-10,Southbury,06488,399795,0.2,60,59,112,131,99.3,"Redfin, ZIP 06488, 3 months ending Oct 2026"
+2026-10,Wilton,06897,1099436,-17.9,31,40,61,73,104.2,"Redfin, ZIP 06897, 3 months ending Oct 2026"

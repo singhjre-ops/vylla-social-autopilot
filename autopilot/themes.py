@@ -2,13 +2,33 @@
 
 THEMES = {
     "market_update": {
-        "label": "MARKET UPDATE",
+        "label": "MARKET DATA",
         "brief": (
-            "Write a monthly market update for {town}, CT using ONLY these Smart MLS figures: {stats}. "
-            "Explain what the numbers mean for buyers and sellers in plain language."
+            "Write a market data post for {town}, CT using ONLY these Redfin figures: {stats}. "
+            "Lead with the single most surprising number. Say 'typical sale price', 'days to sell' and "
+            "'percent of asking price', never jargon like median, DOM or YoY. Explain what each number means "
+            "for someone selling and for someone buying, in plain language. Do not add any other numbers, "
+            "estimates, predictions or comparisons to other places."
         ),
         "needs": "stats",
-        "carousel": "Make it a market breakdown: one figure per slide with what it means, then what it means if you sell.",
+        "carousel": ("Make it a numbers breakdown: cover hooks with the most surprising figure; then one slide per "
+                     "figure (big = the figure exactly as given, e.g. $679,652 or 56 days), each with what it means; "
+                     "then 'If you're selling' and 'If you're buying' slides. Every number must come from the figures."),
+        "keyword": "VALUE",
+    },
+    "market_compare": {
+        "label": "MARKET DATA",
+        "brief": (
+            "Write a post comparing these Greater Danbury towns using ONLY these Redfin figures: {stats}. "
+            "Pick ONE angle, for example where homes sell fastest, where prices moved most vs. last year, or "
+            "where buyers paid over asking. Say 'typical sale price', 'days to sell' and 'percent of asking price', "
+            "never jargon. Describe markets and numbers only, never the people who live in a town. "
+            "Do not add any other numbers, estimates or predictions."
+        ),
+        "needs": "stats",
+        "carousel": ("Make it a ranked list for that one angle: cover states the angle; then one slide per town in "
+                     "ranked order (big = the figure exactly as given), with one line on what it means; then a recap "
+                     "slide listing each town and its figure. Every number must come from the figures."),
         "keyword": "VALUE",
     },
     "town_spotlight": {

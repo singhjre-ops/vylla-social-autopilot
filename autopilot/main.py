@@ -61,9 +61,64 @@ def _posted_ids():
     return ids
 
 
+
+def _month_label(month):
+    return datetime.strptime(month, "%Y-%m").strftime("%B %Y")
+
+
+def _fresh_market_rows(today, max_age_days=100):
+    """Latest month of data/market_stats.csv, or [] if it is missing or too old to post."""
+    stats = _rows("market_stats.csv")
+    if not stats:
+        return []
+    latest = max(r["month"] for r in stats)
+    if (today - datetime.strptime(latest, "%Y-%m").date()).days > max_age_days:
+        print(f"market_stats.csv is stale ({latest}); skipping data posts until it is refreshed")
+        return []
+    return [r for r in stats if r["month"] == latest]
+
+
+def _stats_line(r):
+    """One town's figures as plain text for Gemini. Only these numbers may appear in the post."""
+    price = int(float(r["median_sale_price"]))
+    yoy = float(r["price_change_yoy_pct"])
+    return (f"{r['town']} (ZIP {r['zip']}), three months ending {_month_label(r['month'])}: "
+            f"typical (median) sale price ${price:,}, {'up' if yoy >= 0 else 'down'} {abs(yoy)}% vs. last year; "
+            f"{r['median_days_on_market']} days to sell (last year {r['days_on_market_last_year']}); "
+            f"{r['homes_sold']} homes sold in the last month (last year {r['homes_sold_last_year']}); "
+            f"homes sold for {r['sale_to_list_pct']}% of asking price on average")
+
+
+def _unsupported_numbers(post, facts):
+    """Numbers in a data post that are not in the source figures. Used to hold back made-up stats."""
+    import re
+    num = re.compile(r"(\$?)(\d[\d,]*(?:\.\d+)?)\s*(%?)")
+    allowed = set()
+    for _, n, _ in num.findall(facts.get("stats", "")):
+        n = n.replace(",", "")
+        allowed.add(n)
+        if n.isdigit() and len(n) >= 6:  # short forms of prices: 679652 -> 680 (K), 680, 0.68 / 1.2 (M)
+            v = int(n)
+            allowed |= {str(round(v / 1000)), str(v // 1000), f"{v / 1e6:.1f}", f"{v / 1e6:.2f}"}
+    text = " ".join([post.get("headline", ""), post.get("headline2", ""), post.get("subhead", ""), str(post.get("big", "")),
+                     post.get("caption", ""), post.get("short_caption", ""), json.dumps(post.get("slides", [])),
+                     json.dumps(post.get("recap", []))])
+    bad = []
+    for dollar, n, pct in num.findall(text):
+        v = n.replace(",", "")
+        if v in allowed:
+            continue
+        if not dollar and not pct and v.isdigit() and (int(v) <= 12 or 2020 <= int(v) <= 2030):
+            continue  # slide numbers, step counts, "3 months", years
+        bad.append(f"{dollar}{n}{pct}")
+    return sorted(set(bad))
+
+
 def pick(cfg, today):
     """Choose theme, town and facts for today. Falls back when data is missing."""
     theme = cfg["calendar"][today.weekday()]
+    if isinstance(theme, list):  # e.g. [market_compare, buyer_tip]: alternate week by week
+        theme = theme[today.isocalendar()[1] % len(theme)]
     regions = list(cfg["regions"].values())
     day = today.toordinal()
     towns = regions[day % len(regions)]  # next region each day
@@ -85,18 +140,18 @@ def pick(cfg, today):
         else:
             theme = "buyer_tip"
 
-    if theme == "market_update":
-        stats = _rows("market_stats.csv")
-        if stats:
-            latest = max(r["month"] for r in stats)
-            month_rows = [r for r in stats if r["month"] == latest]
-            row = month_rows[today.toordinal() % len(month_rows)]
-            facts.update(town=row["town"], source_id=f"stats-{latest}-{row['town']}", stats_source=row["source"],
-                         stats=f"{latest}: median sale price ${int(float(row['median_sale_price'])):,}, "
-                               f"{row['closed_sales']} closed sales, {row['median_days_on_market']} median days "
-                               f"on market, {row['active_inventory']} active listings (source: {row['source']})")
+    if theme in ("market_update", "market_compare"):
+        rows = _fresh_market_rows(today)
+        if not rows:
+            theme = "seller_tip"  # no current numbers: never let AI guess market numbers
+        elif theme == "market_update":
+            row = rows[today.toordinal() // 7 % len(rows)]  # a different town each week
+            facts.update(town=row["town"], source_id=f"stats-{row['month']}-{row['town']}",
+                         stats_source=row["source"], stats=_stats_line(row), month_label=_month_label(row["month"]))
         else:
-            theme = "seller_tip"  # never let AI guess market numbers
+            facts.update(town="Greater Danbury", source_id=f"compare-{rows[0]['month']}",
+                         stats_source=f"Redfin, 3 months ending {_month_label(rows[0]['month'])}",
+                         stats="; ".join(_stats_line(r) for r in rows), month_label=_month_label(rows[0]["month"]))
 
     return theme, facts
 
@@ -132,6 +187,10 @@ def generate_carousel(cfg, today, sample=False, single=False):
     for attempt in range(3):
         post = json.loads(json.dumps(SAMPLE_CAROUSEL)) if sample else gemini.generate_carousel(cfg, brief)
         problems = compliance.check(post, cfg)
+        if theme in ("market_update", "market_compare") and not sample:
+            made_up = _unsupported_numbers(post, facts)
+            if made_up:
+                problems.append("numbers not in the source data: " + ", ".join(made_up))
         if not problems:
             break
         print(f"attempt {attempt + 1} flagged: {problems}")
@@ -265,7 +324,7 @@ def build_week(cfg, today, sample=False):
     summary = (f"Metricool CSV for week of {week_start}: {len(rows)} posts. "
                f"Used this month: {json.dumps(ledger)} of {cfg['metricool']['monthly_post_limit']}.")
     if skipped:
-        summary += f" Skipped to stay under the limit: {', '.join(skipped)}."
+        summary += f" Skipped (monthly limit, or failed and needs a redo): {', '.join(skipped)}."
     print(summary)
     print(out)
     if os.environ.get("TELEGRAM_BOT_TOKEN"):
