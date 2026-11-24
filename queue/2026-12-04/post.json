@@ -1,0 +1,100 @@
+{
+  "headline": "The Danbury starter pack.",
+  "headline2": "Six places to know.",
+  "big": "",
+  "subhead": "A quick look at long-standing landmarks, parks, and connections in town. Swipe.",
+  "slides": [
+    {
+      "title": "Candlewood Lake access",
+      "big": "01",
+      "text": "Connecticut's largest lake borders Danbury, offering public boat launches, seasonal swimming, and waterfront parks along the northern edge."
+    },
+    {
+      "title": "Tarrywile Park and Mansion",
+      "big": "02",
+      "text": "Over 700 acres of municipal parkland with 21 miles of trails, historic barns, and open fields open year-round."
+    },
+    {
+      "title": "Richter Park Golf Course",
+      "big": "03",
+      "text": "A municipal 18-hole golf course sitting along West Lake Reservoir, featuring public play and winter walking trails."
+    },
+    {
+      "title": "Metro-North Danbury Branch",
+      "big": "04",
+      "text": "Direct rail service from downtown Danbury to South Norwalk, connecting riders straight to Grand Central Terminal."
+    },
+    {
+      "title": "Danbury Railway Museum",
+      "big": "05",
+      "text": "Located in the restored 1903 union station downtown, featuring historic train cars, turntable tours, and seasonal train events."
+    },
+    {
+      "title": "Major highway connections",
+      "big": "06",
+      "text": "Interstate 84 and U.S. Route 7 intersect here, providing direct routes toward Westchester County, Hartford, and Norwalk."
+    }
+  ],
+  "recap_title": "Danbury on one slide",
+  "recap": [
+    [
+      "01",
+      "Candlewood Lake public access"
+    ],
+    [
+      "02",
+      "700 acres at Tarrywile Park"
+    ],
+    [
+      "03",
+      "Richter Park municipal golf"
+    ],
+    [
+      "04",
+      "Metro-North rail downtown"
+    ],
+    [
+      "05",
+      "Danbury Railway Museum downtown"
+    ],
+    [
+      "06",
+      "I-84 and Route 7 access"
+    ]
+  ],
+  "cta_title": "Buying in Danbury?",
+  "cta_text": "Comment MOVE and I will personally send you every home for sale right now in Danbury.",
+  "caption": "Tarrywile Park covers 700 acres, but most newcomers only see a fraction of Danbury on their first pass.\n\nDecember is a great time to look closely at Danbury CT. You have Candlewood Lake to the north, I-84 and Route 7 meeting near the center, and direct Metro-North train service downtown.\n\nWhether you need trail access at Tarrywile or a straightforward commute toward Westchester, the local geography makes transit clear and predictable. I track local real estate data here every day.\n\nComment MOVE and I'll send you every home for sale right now in Danbury.",
+  "short_caption": "A simple overview of key parks, transit, and landmarks across Danbury CT this December.",
+  "hashtags": [
+    "danburyct",
+    "danburyrealestate",
+    "fairfieldcountyct",
+    "ctrealestate"
+  ],
+  "alt": "Text graphic titled 'The Danbury starter pack. Six places to know.'",
+  "cta_keyword": "MOVE",
+  "captions": {
+    "long": "Tarrywile Park covers 700 acres, but most newcomers only see a fraction of Danbury on their first pass.\n\nDecember is a great time to look closely at Danbury CT. You have Candlewood Lake to the north, I-84 and Route 7 meeting near the center, and direct Metro-North train service downtown.\n\nWhether you need trail access at Tarrywile or a straightforward commute toward Westchester, the local geography makes transit clear and predictable. I track local real estate data here every day.\n\nComment MOVE and I'll send you every home for sale right now in Danbury.\n\n#danburyct #danburyrealestate #fairfieldcountyct #ctrealestate\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity",
+    "short": "A simple overview of key parks, transit, and landmarks across Danbury CT this December.\nVylla Home | (475) 400-0661",
+    "gmb": "Tarrywile Park covers 700 acres, but most newcomers only see a fraction of Danbury on their first pass.\n\nDecember is a great time to look closely at Danbury CT. You have Candlewood Lake to the north, I-84 and Route 7 meeting near the center, and direct Metro-North train service downtown.\n\nWhether you need trail access at Tarrywile or a straightforward commute toward Westchester, the local geography makes transit clear and predictable. I track local real estate data here every day.\n\nComment MOVE and I'll send you every home for sale right now in Danbury.\n\nJaskaran Singh, REALTOR\u00ae | Brokered by Vylla Home | CT Lic# RES.0820095 | Call/Text (475) 400-0661 | jaskaranrealtor.com | English \u00b7 Hindi \u00b7 Punjabi \u00b7 Urdu | Equal Housing Opportunity"
+  },
+  "id": "2026-12-04",
+  "theme": "town_spotlight",
+  "town": "Danbury",
+  "source_id": null,
+  "problems": [],
+  "status": "pending",
+  "format": "carousel",
+  "slide_files": [
+    "slide-01.jpg",
+    "slide-02.jpg",
+    "slide-03.jpg",
+    "slide-04.jpg",
+    "slide-05.jpg",
+    "slide-06.jpg",
+    "slide-07.jpg",
+    "slide-08.jpg",
+    "slide-09.jpg"
+  ]
+}
