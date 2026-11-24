@@ -15,9 +15,9 @@
       "text": "The typical sale price reached $524,731, up 8.2% compared to last year in ZIP 06810."
     },
     {
-      "title": "Days to sell",
+      "title": "Typical days to sell",
       "big": "53 days",
-      "text": "It took 53 days to sell a home on average, compared to 49 days last year."
+      "text": "Homes typically took 53 days to sell, compared to 49 days last year."
     },
     {
       "title": "Monthly sales volume",
@@ -51,7 +51,7 @@
     ],
     [
       "Days to sell",
-      "53 days average"
+      "53 days typical"
     ],
     [
       "Homes sold",
@@ -91,7 +91,6 @@
     "slide-06.jpg",
     "slide-07.jpg",
     "slide-08.jpg",
-    "slide-09.jpg",
-    "slide-10.jpg"
+    "slide-09.jpg"
   ]
 }

@@ -5,8 +5,9 @@ THEMES = {
         "label": "MARKET DATA",
         "brief": (
             "Write a market data post for {town}, CT using ONLY these Redfin figures: {stats}. "
-            "Lead with the single most surprising number. Say 'typical sale price', 'days to sell' and "
-            "'percent of asking price', never jargon like median, DOM or YoY. Explain what each number means "
+            "Lead with the single most surprising number. Say 'typical sale price', 'typical days to sell' and "
+            "'percent of asking price', never jargon like median, DOM or YoY. Days to sell is a typical (median) figure, "
+            "never call it an average. Explain what each number means "
             "for someone selling and for someone buying, in plain language. Do not add any other numbers, "
             "estimates, predictions or comparisons to other places."
         ),

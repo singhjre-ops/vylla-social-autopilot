@@ -69,7 +69,7 @@ h2{font-weight:800;font-size:76px;line-height:1.05;letter-spacing:-2.4px;margin-
 .one .big{font-size:170px;margin-top:30px}.one .cards{margin-top:36px}.one h1{font-size:84px}
 .foot img{height:70px}
 """
-CSS += (".big.m{font-size:170px;letter-spacing:-7px}.big.s{font-size:120px;letter-spacing:-4px}"
+CSS += (".big.bm{font-size:170px;letter-spacing:-7px}.big.bs{font-size:120px;letter-spacing:-4px}"
         "h1.long{font-size:76px;letter-spacing:-2.4px}h2.long{font-size:62px}"
         ".list.tight .row{padding:18px 0}.list.tight .k{font-size:42px;min-width:340px;white-space:nowrap}.list.tight .v{font-size:32px}")
 
@@ -87,7 +87,7 @@ def _big(v):
     v = str(v or "").strip()
     if not v:
         return ""
-    size = "" if len(v) <= 5 else ("m" if len(v) <= 7 else "s")
+    size = "" if len(v) <= 5 else ("bm" if len(v) <= 7 else "bs")  # not "s": that class marks a whole slide
     return f'<div class="big {size}">{e(v)}</div>'
 
 
@@ -161,7 +161,7 @@ def render_slides(bodies, eyebrow, theme, out_dir, prefix="slide", source=None):
         page = browser.new_page(viewport={"width": 1080, "height": 1350})
         page.set_content(f"<html><head><meta charset=utf-8><style>{_fonts()}{CSS}</style></head><body>{pages}</body></html>")
         page.wait_for_timeout(300)
-        for i, el in enumerate(page.query_selector_all(".s"), 1):
+        for i, el in enumerate(page.query_selector_all("div.s"), 1):
             png = out_dir / f"{prefix}-{i:02d}.png"
             el.screenshot(path=str(png))
             jpg = png.with_suffix(".jpg")
